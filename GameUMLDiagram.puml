@@ -1,0 +1,12 @@
+@startuml
+class System {
+ +killPlayer()
+}
+class Player
+class Zombie
+class Coin
+class Wall
+class Floor
+
+
+@enduml
