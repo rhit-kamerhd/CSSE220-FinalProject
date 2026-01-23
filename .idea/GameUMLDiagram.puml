@@ -1,0 +1,17 @@
+@startuml
+class Main {
+
+}
+class Player {}
+class Zombie {}
+class Coin {}
+
+class Terrain{
+ +class Wall
+ + class FloorTiles
+ + class
+}
+
+
+
+@enduml
