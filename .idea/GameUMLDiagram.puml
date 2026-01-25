@@ -1,17 +1,68 @@
 @startuml
 class Main {
-
-}
-class Player {}
-class Zombie {}
-class Coin {}
-
-class Terrain{
- +class Wall
- + class FloorTiles
- + class
+    +playerInput
+    +handleMovePlayer() : void
+    +handleMoveZombies() : void
+    +checkPlayerCollision() : boolean
+    +spawnZombies() : void
+    +handlePauseGame() : void
 }
 
+class Player {
++health : int
++lives : int
++score : int
 
++mineBlock() : void
++catapult() : void
+}
+
+class Zombie {
++health : int
++damagePlayer() : void
+}
+
+class HUD {
++displayHUD() : void
++displayPauseMenu() : void
+}
+
+class Block{
++mapTemplates
++buildMap() : void
+}
+
+class Gem {
+    + isCollected : boolean
+    + increaseScore() : void
+}
+
+class Wall{
+ + hasTorch : boolean
+ + displayWall() : void
+}
+
+class Exit{
+
+ + endLevel() : void
+
+
+}
+
+class FloorTile{
++lightLevel : int
++displayFloorTile() : void
+
+}
+
+Block <|-- Wall
+Block <|-- FloorTile
+Block <|-- Gem
+Block <|-- Exit
+
+
+Main -down-> Player
+Main -down-> Zombie
+Main -down-> Block
 
 @enduml

@@ -1,4 +1,4 @@
 package immobile;
 
-public class Coin {
+public class Gem {
 }

@@ -1,4 +1,4 @@
 package immobile;
 
-public class FloorTile extends Terrain{
+public class FloorTile extends Block {
 }

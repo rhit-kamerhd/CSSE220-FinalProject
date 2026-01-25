@@ -1,4 +1,4 @@
 package immobile;
 
-public class Wall extends Terrain{
+public class Wall extends Block {
 }
