@@ -9,6 +9,8 @@ class Main {
 }
 
 class Player {
+ + positionX : int
+ + positionY : int
 +health : int
 +lives : int
 +score : int
@@ -18,7 +20,8 @@ class Player {
 }
 
 class Zombie {
-+health : int
++positionX : int
++positionY : int
 +damagePlayer() : void
 }
 
@@ -28,30 +31,39 @@ class HUD {
 }
 
 class Block{
++isWalkable : boolean
 +mapTemplates
 +buildMap() : void
 }
 
 class Gem {
+    + positionX : int
+    + positionY : int
     + isCollected : boolean
-    + increaseScore() : void
+    + beCollected() : void
 }
 
 class Wall{
+ + positionX : int
+ + positionY : int
  + hasTorch : boolean
  + displayWall() : void
 }
 
 class Exit{
-
+ + positionX : int
+ + positionY : int
+ + isExitValid : boolean
  + endLevel() : void
 
 
 }
 
 class FloorTile{
-+lightLevel : int
-+displayFloorTile() : void
++ positionX : int
++ positionY : int
++ lightLevel : int
++ displayFloorTile() : void
 
 }
 
