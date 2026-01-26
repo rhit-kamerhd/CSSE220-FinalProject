@@ -1,4 +1,4 @@
 package immobile;
 
-public class Gem {
+public class Gem implements Collectible{
 }

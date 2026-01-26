@@ -1,4 +1,4 @@
 package immobile;
 
-public class FloorTile extends Block {
+public class FloorTile implements Tile{
 }
