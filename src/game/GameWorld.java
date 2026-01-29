@@ -5,27 +5,33 @@ import immobile.Tile;
 import mobile.Player;
 import mobile.Zombie;
 import javax.swing.text.Position;
-import java.util.List;
+import java.util.ArrayList;
 
 public class GameWorld {
     private Tile[][] grid;
     private Player player;
-    private List<Zombie> zombies;
-    private List<Collectible> collectibles;
+    private ArrayList<Zombie> zombies;
+    private ArrayList<Collectible> collectibles;
     private int gemsRemaining;
     private GameStatus status;
 
-    //TODO: complete method isWalkable(Position pos)
+    //constructor for GameWorld
+    public GameWorld(Tile[][] g, Player p, ArrayList<Zombie> z, ArrayList<Collectible> c){
+        grid = g; player = p; zombies = z; collectibles = c; gemsRemaining = c.size();
+        status = GameStatus.RUNNING;
+    }
+
+    //TODO: complete method isWalkable(game.Position pos)
     public boolean isWalkable(Position pos){
 
     }
 
-    //TODO: complete method tileAt(Position pos)
+    //TODO: complete method tileAt(game.Position pos)
     public Tile tileAt(Position pos) {
 
     }
 
-    //TODO: complete method collectibleAt(Position pos)
+    //TODO: complete method collectibleAt(game.Position pos)
     public Collectible collectibleAt(Position pos){
 
     }

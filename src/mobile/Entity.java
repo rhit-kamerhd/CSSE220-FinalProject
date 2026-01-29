@@ -2,19 +2,19 @@ package mobile;
 
 import game.GameWorld;
 
-import javax.swing.text.Position;
+import game.Position;
 
 public abstract class Entity {
     private Position pos;
 
-    //TODO: complete method getPosition()
+    //DONE: complete method getPosition()
     public Position getPosition(){
-
+        return this.pos;
     }
 
-    //TODO: complete method setPosition(Position pos)
-    public void setPosition(Position pos){
-
+    //DONE: complete method setPosition(game.Position pos)
+    public void setPosition(Position p){
+        this.pos = p;
     }
 
     //TODO: complete method update(GameWorld world)

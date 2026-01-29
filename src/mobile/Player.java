@@ -2,9 +2,16 @@ package mobile;
 
 import game.GameWorld;
 
-public class Player {
+import game.Position;
+
+public class Player extends Entity{
     private int lives;
     private int score;
+    private Position pos;
+
+    public Player(Position p){
+        lives = 3; score = 0; pos = p;
+    }
 
     //TODO: complete method tryMove(mobile.Direction d, GameWorld world)
     public void tryMove(Direction d, GameWorld world){

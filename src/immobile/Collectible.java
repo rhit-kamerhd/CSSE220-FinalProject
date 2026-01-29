@@ -3,10 +3,9 @@ package immobile;
 import game.GameWorld;
 import mobile.Player;
 
-import javax.swing.text.Position;
+import game.Position;
 
 public interface Collectible {
-
     //TODO: complete method getPosition()
     default Position getPosition(){
 
