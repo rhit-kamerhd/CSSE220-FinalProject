@@ -21,4 +21,11 @@ public class Position {
     public int[] getPosition(){
         int[] pos = new int[2]; pos[0] = row; pos[1] = col; return pos;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Position other)) return false;
+        return this.row == other.row && this.col == other.col;
+    }
+
 }

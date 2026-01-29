@@ -11,4 +11,10 @@ public class Gem implements Collectible{
     public Gem(Position p){
         pos = p; collected = false;
     }
+
+    public Position getPosition(){
+        return pos;
+    }
+
+
 }
