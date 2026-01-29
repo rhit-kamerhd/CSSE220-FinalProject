@@ -32,7 +32,8 @@ public class WorldBuilder {
                 }
             }
         }
-
+        ArrayList<Zombie> zombies = new ArrayList<>();
+        GameWorld world = new GameWorld(grid, player, zombies, collectibles);
     }
 
 }
