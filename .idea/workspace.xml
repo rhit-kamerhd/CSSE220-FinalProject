@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: updates to Game">
-      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
-    </list>
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: added gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +69,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject" />
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\src" />
       <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\.idea" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -100,7 +100,7 @@
       <workItem from="1769371604749" duration="15000" />
       <workItem from="1769460770813" duration="6521000" />
       <workItem from="1769638528800" duration="1171000" />
-      <workItem from="1769640476860" duration="24806000" />
+      <workItem from="1769640476860" duration="25134000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -214,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769788458122</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: added gitignore">
+      <option name="closed" value="true" />
+      <created>1769790617619</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1769790617619</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +261,7 @@
     <MESSAGE value="feat: collidable interface added" />
     <MESSAGE value="feat: GameWorld methods completed + other miscellaneous methods" />
     <MESSAGE value="feat: updates to Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: updates to Game" />
+    <MESSAGE value="feat: added gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added gitignore" />
   </component>
 </project>
