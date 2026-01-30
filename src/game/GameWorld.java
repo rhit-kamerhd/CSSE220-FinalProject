@@ -11,7 +11,7 @@ public class GameWorld {
     private Player player;
     private ArrayList<Zombie> zombies;
     private ArrayList<Collectible> collectibles;
-    private int gemsRemaining;
+    private static int gemsRemaining;
     private GameStatus status;
 
     //constructor for GameWorld
@@ -68,8 +68,8 @@ public class GameWorld {
         status = s;
     }
 
-    public int getGemsRemaining(){
-        return this.gemsRemaining;
+    public static int getGemsRemaining(){
+        return gemsRemaining;
     }
     public Tile[][] getMap(){
         return grid;

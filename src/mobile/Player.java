@@ -28,6 +28,10 @@ public class Player extends Entity{
 
     }
 
+    public static int getLivesRemaining(){
+        return lives;
+    }
+
 
 
 
