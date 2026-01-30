@@ -71,5 +71,19 @@ public class GameWorld {
     public int getGemsRemaining(){
         return this.gemsRemaining;
     }
+    public Tile[][] getMap(){
+        return grid;
+    }
+    public ArrayList<Collectible> getCollectibles(){
+        return collectibles;
+    }
+    public ArrayList<Zombie> getZombies(){
+        return zombies;
+    }
+    public Position getPlayerPosition(){
+        return player.getPosition();
+    }
+
+
 
 }
