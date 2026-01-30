@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: updates to Game">
+      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="UML Sequence" />
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rhit-kamerhd&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rhit-kamerhd/CSSE220-FinalProject&quot;,
+    &quot;accountId&quot;: &quot;66422de0-a546-4b5e-b75b-b9894dc85689&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="38coXIqfqGVDhByUTdMjL5HpHaT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Sequence&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamerhd/OneDrive - Rose-Hulman Institute of Technology/CSSE220/FinalProject&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\.idea" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="game" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="" />
+      <created>1769108257806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769108257806</updated>
+      <workItem from="1769108258947" duration="2874000" />
+      <workItem from="1769184836586" duration="3599000" />
+      <workItem from="1769361823071" duration="20000" />
+      <workItem from="1769362965977" duration="5479000" />
+      <workItem from="1769371604749" duration="15000" />
+      <workItem from="1769460770813" duration="6521000" />
+      <workItem from="1769638528800" duration="1171000" />
+      <workItem from="1769640476860" duration="24806000" />
+    </task>
+    <task id="LOCAL-00001" summary="test push">
+      <option name="closed" value="true" />
+      <created>1769120081873</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1769120081873</updated>
+    </task>
+    <task id="LOCAL-00002" summary="another test push">
+      <option name="closed" value="true" />
+      <created>1769185386576</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1769185386576</updated>
+    </task>
+    <task id="LOCAL-00003" summary="another test push">
+      <option name="closed" value="true" />
+      <created>1769197495110</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769197495110</updated>
+    </task>
+    <task id="LOCAL-00004" summary="preliminary classes">
+      <option name="closed" value="true" />
+      <created>1769198293773</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769198293773</updated>
+    </task>
+    <task id="LOCAL-00005" summary="more preliminary classes">
+      <option name="closed" value="true" />
+      <created>1769366104470</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1769366104470</updated>
+    </task>
+    <task id="LOCAL-00006" summary="some fun lil uml edits">
+      <option name="closed" value="true" />
+      <created>1769368799920</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769368799920</updated>
+    </task>
+    <task id="LOCAL-00007" summary="some more fun lil uml edits">
+      <option name="closed" value="true" />
+      <created>1769370730619</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769370730619</updated>
+    </task>
+    <task id="LOCAL-00008" summary="mostly all classes created">
+      <option name="closed" value="true" />
+      <created>1769469773653</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1769469773653</updated>
+    </task>
+    <task id="LOCAL-00009" summary="variables and methods initialized, and TODOs added">
+      <option name="closed" value="true" />
+      <created>1769472429359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1769472429359</updated>
+    </task>
+    <task id="LOCAL-00010" summary="variables and methods initialized, and TODOs added">
+      <option name="closed" value="true" />
+      <created>1769638788627</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1769638788627</updated>
+    </task>
+    <task id="LOCAL-00011" summary="variables and methods initialized, and TODOs added">
+      <option name="closed" value="true" />
+      <created>1769703034001</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1769703034001</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: collidable interface added">
+      <option name="closed" value="true" />
+      <created>1769703637710</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1769703637710</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: GameWorld methods completed + other miscellaneous methods">
+      <option name="closed" value="true" />
+      <created>1769713111830</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1769713111830</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: updates to Game">
+      <option name="closed" value="true" />
+      <created>1769788458122</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1769788458122</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="91a86ae3-a1ac-4bf5-8d59-789529149d0a" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="91a86ae3-a1ac-4bf5-8d59-789529149d0a">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test push" />
+    <MESSAGE value="another test push" />
+    <MESSAGE value="preliminary classes" />
+    <MESSAGE value="more preliminary classes" />
+    <MESSAGE value="some fun lil uml edits" />
+    <MESSAGE value="some more fun lil uml edits" />
+    <MESSAGE value="mostly all classes created" />
+    <MESSAGE value="variables and methods initialized, and TODOs added" />
+    <MESSAGE value="feat: collidable interface added" />
+    <MESSAGE value="feat: GameWorld methods completed + other miscellaneous methods" />
+    <MESSAGE value="feat: updates to Game" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: updates to Game" />
+  </component>
+</project>

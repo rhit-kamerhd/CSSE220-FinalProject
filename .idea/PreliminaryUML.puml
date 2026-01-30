@@ -1,0 +1,132 @@
+@startuml
+top to bottom direction
+class Game {
+  - world : GameWorld
+  - input : InputHandler
+  - hud : HUD
+  - paused : boolean
+  + init() : void
+  + update(dt: double) : void
+  + render() : void
+  + togglePause() : void
+}
+
+class GameWorld {
+  - grid : Tile[][]
+  - player : Player
+  - zombies : List<Zombie>
+  - collectibles : List<Collectible>
+  - gemsRemaining : int
+  - status : GameStatus
+  + isWalkable(pos: Position) : boolean
+  + tileAt(pos: Position) : Tile
+  + collectibleAt(pos: Position) : Collectible
+  + removeCollectible(c: Collectible) : void
+  + decrementGems() : void
+  + setStatus(s: GameStatus) : void
+  + getStatus() : GameStatus
+}
+
+enum GameStatus {
+  RUNNING
+  WON
+  LOST
+}
+
+class WorldBuilder {
+  + buildFromTemplate(templateId: String) : GameWorld
+}
+
+class InputHandler {
+  + getMoveDirection() : Direction
+  + isPushPressed() : boolean
+  + isPausePressed() : boolean
+}
+
+class HUD {
+  + render(world: GameWorld) : void
+  + renderPauseMenu() : void
+}
+
+class Position {
+  + row : int
+  + col : int
+  + translate(d: Direction) : Position
+}
+
+enum Direction {
+  UP
+  DOWN
+  LEFT
+  RIGHT
+}
+
+interface Tile {
+  + isWalkable() : boolean
+  + onEnter(e: Entity, world: GameWorld) : void
+}
+
+class FloorTile
+class Wall
+class ExitTile {
+  + onEnter(e: Entity, world: GameWorld) : void
+}
+
+Tile <|.. FloorTile
+Tile <|.. Wall
+Tile <|.. ExitTile
+
+abstract class Entity {
+  - pos : Position
+  + getPosition() : Position
+  + setPosition(p: Position) : void
+  + update(world: GameWorld) : void
+}
+
+class Player {
+  - lives : int
+  - score : int
+  + tryMove(d: Direction, world: GameWorld) : void
+  + loseLife() : void
+  + pushAttempt(d: Direction, world: GameWorld) : void
+}
+
+class Zombie {
+  + chooseMove(world: GameWorld) : Direction
+  + tryMove(d: Direction, world: GameWorld) : void
+  + update(world: GameWorld) : void
+}
+
+interface Collectible {
+  + getPosition() : Position
+  + onCollect(player: Player, world: GameWorld) : void
+  + isCollected() : boolean
+}
+
+class Gem {
+  - pos : Position
+  - collected : boolean
+  + onCollect(player: Player, world: GameWorld) : void
+  + isCollected() : boolean
+  + getPosition() : Position
+}
+
+Collectible <|.. Gem
+
+InputHandler --> Game
+GameWorld -->Game
+HUD --> Game
+
+WorldBuilder ..> GameWorld
+
+Collectible --> GameWorld
+Zombie --> GameWorld
+Player --> GameWorld
+
+Entity <|-- Player
+Entity <|-- Zombie
+
+
+Player ..> InputHandler
+
+@enduml
