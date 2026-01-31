@@ -1,27 +1,45 @@
 package mobile;
 
+import java.util.Random;
 import game.GameWorld;
 import game.Position;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
-public class Zombie extends Entity{
-    Position pos = null;
+public class Zombie extends Entity {
 
-    public Zombie(Position p){
-        pos = p;
+    private Random rand = new Random();
+    private Image sprite;
+
+    public Zombie(Position p) {
+        setPosition(p);
+        sprite = new ImageIcon(getClass().getResource("/sprites/zombie_sprite.png")).getImage();
     }
 
-    public Position getPosition(){
-        return this.pos;
+    public Image getSprite() {
+        return sprite;
     }
 
-    //TODO: complete method chooseMove(GameWorld world)
-    public Direction chooseMove(GameWorld world){
-
+    public Direction chooseMove(GameWorld world) {
+        Direction[] dirs = Direction.values();
+        for (int i = 0; i < 10; i++) {
+            Direction d = dirs[rand.nextInt(dirs.length)];
+            Position next = getPosition().translate(d);
+            if (!world.isWall(next)) return d;
+        }
+        return null;
     }
 
-    //TODO: complete method tryMove(Direction d, GameWorld world)
-    public void tryMove(Direction d, GameWorld world){
-
+    public void tryMove(Direction d, GameWorld world) {
+        if (d == null) return;
+        Position next = getPosition().translate(d);
+        if (!world.isWall(next)) setPosition(next);
     }
 
+    @Override
+    public void update(GameWorld world) {
+        Direction d = chooseMove(world);
+        tryMove(d, world);
+    }
 }
+
