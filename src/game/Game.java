@@ -2,15 +2,17 @@ package game;
 import immobile.*;
 import mobile.InputHandler;
 import mobile.Zombie;
+import game.HUD;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JTextField;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,20 +23,28 @@ public class Game extends JPanel{
     private boolean paused;
     public static int levelNum = 1;
 
-    public void init() {
-        while (levelNum < 6) {
-            paused = false; GameStatus s = GameStatus.RUNNING;
-            WorldBuilder worldBuilder = new WorldBuilder();
-            world = worldBuilder.buildFromTemplate(levelNum);
 
-            while (s == GameStatus.RUNNING) {
+    public class Main {
 
-            }
-            if (s == GameStatus.WON) {
-                levelNum++; this.onWin();
-            }
-        }
-    }
+        public void main(String[] args) {
+            GameWorld world = WorldBuilder.buildFromTemplate(1);
+            InputHandler input = new InputHandler(); HUD hud = new HUD();
+            renderWorld(world, g);
+            JFrame frame = new JFrame("Cave Game");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setResizable(false);
+            frame.setSize(1080, 1080); frame.add(hud);
+            frame.addKeyListener(input);
+            frame.setVisible(true);
+            Timer gameLoop = new Timer(16, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    game.update(0.016);
+                    hud.repaint();
+                }
+            });
+            gameLoop.start();
+        }}
 
     public void update(double dt){
 
@@ -80,6 +90,7 @@ public class Game extends JPanel{
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     if (!paused){
+                        togglePause(s);
 
                     }
                     if (paused){

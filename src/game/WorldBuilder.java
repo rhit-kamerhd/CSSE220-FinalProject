@@ -28,7 +28,7 @@ public class WorldBuilder {
      */
 
     //DONE: complete method buildFromTemplate(String TemplateID)
-    public GameWorld buildFromTemplate(int levelNum) {
+    public static GameWorld buildFromTemplate(int levelNum) {
         int[][] template = mapTemplates.get(levelNum);
         Tile[][] grid = new Tile[36][36];
         ArrayList<Collectible> collectibles = new ArrayList<>();

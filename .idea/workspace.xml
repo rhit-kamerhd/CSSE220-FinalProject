@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="another test commit">
-      <change afterPath="$PROJECT_DIR$/src/sprites/wallSprite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/Collectible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Collectible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Gem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobile/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/testClas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +110,8 @@
       <workItem from="1769371604749" duration="15000" />
       <workItem from="1769460770813" duration="6521000" />
       <workItem from="1769638528800" duration="1171000" />
-      <workItem from="1769640476860" duration="31381000" />
+      <workItem from="1769640476860" duration="34273000" />
+      <workItem from="1769826504076" duration="530000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -243,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769790920056</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="another test commit">
+      <option name="closed" value="true" />
+      <created>1769817464532</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1769817464532</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

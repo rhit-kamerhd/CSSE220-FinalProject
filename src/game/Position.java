@@ -10,7 +10,6 @@ public class Position {
         row = r; col = c;
     }
 
-    //DONE: complete method translate(Direction d)
     public Position translate(Direction d){
         if (d == Direction.UP) return new Position(this.row + 1, this.col);
         if (d == Direction.DOWN) return new Position(this.row - 1, this.col);
