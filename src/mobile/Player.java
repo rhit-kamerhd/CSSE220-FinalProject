@@ -1,36 +1,50 @@
 package mobile;
 
 import game.GameWorld;
-
 import game.Position;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
-public class Player extends Entity{
-    private int lives;
-    private int score;
-    private Position pos;
+public class Player extends Entity {
 
-    public Player(Position p){
-        lives = 3; score = 0; pos = p;
+    private int lives = 3;
+    private int score = 0;
+    private InputHandler input;
+    private Image sprite;
+
+    public Player(Position p, InputHandler input) {
+        setPosition(p);
+        this.input = input;
+        sprite = new ImageIcon(getClass().getResource("/sprites/player_sprite.png")).getImage();
     }
 
-    //TODO: complete method tryMove(mobile.Direction d, GameWorld world)
-    public void tryMove(Direction d, GameWorld world){
-
+    public Image getSprite() {
+        return sprite;
     }
 
-    //TODO: complete method loseLife()
-    public void loseLife(){
-
+    public void tryMove(Direction d, GameWorld world) {
+        if (d == null) return;
+        Position next = getPosition().translate(d);
+        if (!world.isWall(next)) setPosition(next);
     }
 
-    //TODO: complete Method pushAttempt(mobile.Direction d, GameWorld world)
-    public void pushAttempt(Direction d, GameWorld world){
-
+    public void loseLife() {
+        if (lives > 0) lives--;
     }
 
-    public static int getLivesRemaining(){
+    public void pushAttempt(Direction d, GameWorld world) {}
+
+    public int getLivesRemaining() {
         return lives;
     }
+
+    @Override
+    public void update(GameWorld world) {
+        Direction d = input.getMoveDirection();
+        tryMove(d, world);
+    }
+}
+
 
 
 
