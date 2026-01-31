@@ -32,21 +32,33 @@ public class Player extends Entity {
         if (lives > 0) lives--;
     }
 
-    public void pushAttempt(Direction d, GameWorld world) {}
-
     public int getLivesRemaining() {
         return lives;
+    }
+
+    public void pushAttempt(Direction d, GameWorld world) {
+        if (d == null) return;
+
+        Position adjacent = getPosition().translate(d);
+        Zombie z = world.getZombieAt(adjacent);
+        if (z == null) return;
+
+        Position launchPos = adjacent;
+
+        for (int i = 0; i < 4; i++) {
+            Position next = launchPos.translate(d);
+            if (world.isWall(next)) break;
+            launchPos = next;
+        }
+
+        z.setPosition(launchPos);
     }
 
     @Override
     public void update(GameWorld world) {
         Direction d = input.getMoveDirection();
         tryMove(d, world);
+        if (input.isPushPressed()) pushAttempt(d, world);
     }
 }
 
-
-
-
-
-}
