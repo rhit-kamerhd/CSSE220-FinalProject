@@ -7,9 +7,9 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 
 public class Zombie extends Entity {
-
-    private Random rand = new Random();
-    private Image sprite;
+    private Position pos;
+    private final Random rand = new Random();
+    private Image sprite = null;
 
     public Zombie(Position p) {
         setPosition(p);

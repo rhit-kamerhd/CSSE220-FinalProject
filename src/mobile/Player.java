@@ -7,7 +7,7 @@ import java.awt.Image;
 
 public class Player extends Entity {
 
-    private int lives = 3;
+    private static int lives = 3;
     private int score = 0;
     private InputHandler input;
     private Image sprite;
@@ -32,19 +32,16 @@ public class Player extends Entity {
         if (lives > 0) lives--;
     }
 
-    public int getLivesRemaining() {
+    public static int getLivesRemaining() {
         return lives;
     }
 
     public void pushAttempt(Direction d, GameWorld world) {
         if (d == null) return;
-
         Position adjacent = getPosition().translate(d);
         Zombie z = world.getZombieAt(adjacent);
         if (z == null) return;
-
         Position launchPos = adjacent;
-
         for (int i = 0; i < 4; i++) {
             Position next = launchPos.translate(d);
             if (world.isWall(next)) break;

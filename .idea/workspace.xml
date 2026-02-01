@@ -9,8 +9,12 @@
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/wallSprite.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,7 @@
       <workItem from="1769460770813" duration="6521000" />
       <workItem from="1769638528800" duration="1171000" />
       <workItem from="1769640476860" duration="34273000" />
-      <workItem from="1769826504076" duration="530000" />
+      <workItem from="1769826504076" duration="9498000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -249,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769817464532</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="another test commit">
+      <option name="closed" value="true" />
+      <created>1769827323706</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1769827323706</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -9,5 +9,9 @@ public class Gem implements Collectible{
         pos = p; collected = false;
     }
 
+    public Position getGemPos(){
+        return this.pos;
+    }
+
 
 }

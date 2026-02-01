@@ -19,7 +19,7 @@ public class HUD extends JPanel{
         unpauseButton.setFocusable(false); unpauseButton.setVisible(false);
         add(levelLabel); add(unpauseButton);
     }
-    public void render(JPanel hud){
+    public void renderHUD(JPanel hud){
         int totalGems = Game.levelNum + 1;
         setFont(new Font("Cambria", Font.BOLD, 16)); hud.setLocation(0, 0);
         JTextField lives = new JTextField("Lives: " + Player.getLivesRemaining() + "/3");
