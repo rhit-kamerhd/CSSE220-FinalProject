@@ -1,8 +1,7 @@
 package game;
 import mobile.InputHandler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -12,14 +11,15 @@ public class Game extends JPanel{
     private static boolean paused;
     public static int levelNum = 1;
 
-    public void update(double dt){
+    public static void update(double dt){
 
     }
 
     static void main(String[] args) {
-        GameWorld world = WorldBuilder.buildFromTemplate(1);
+        GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         InputHandler input = new InputHandler();
         hud = new HUD();
+        Graphics g;
         GameWorld.renderWorld(world, g);
         JFrame frame = new JFrame("Cave Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,17 +29,12 @@ public class Game extends JPanel{
         frame.setVisible(true);
         paused = false;
         input = new InputHandler();
-        Timer gameLoop = new Timer(16, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.update(0.016);
-                hud.repaint();
-            }
-            });
+        Timer gameLoop = new Timer(16, e -> {
+            update(0.016);
+            hud.repaint();
+        });
             gameLoop.start();
         }
-
-
 
     public void togglePause(GameStatus s){
         JTextField field = new JTextField();
@@ -54,5 +49,4 @@ public class Game extends JPanel{
             }
         });
     }
-
 }
