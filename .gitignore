@@ -1,1 +1,5 @@
-/bin/
+bin/
+.DS_Store
+.gitignore
+*.class
+.idea

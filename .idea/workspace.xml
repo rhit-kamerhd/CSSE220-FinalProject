@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: updates to Game">
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="another test commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/wallSprite.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +26,8 @@
       <list>
         <option value="UML Sequence" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +65,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamerhd/OneDrive - Rose-Hulman Institute of Technology/CSSE220/FinalProject&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamerhd/OneDrive - Rose-Hulman Institute of Technology/CSSE220/FinalProject/src/sprites&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -70,7 +79,12 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\src\sprites" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject" />
+      <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\src" />
       <recent name="C:\Users\kamerhd\OneDrive - Rose-Hulman Institute of Technology\CSSE220\FinalProject\.idea" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -100,7 +114,8 @@
       <workItem from="1769371604749" duration="15000" />
       <workItem from="1769460770813" duration="6521000" />
       <workItem from="1769638528800" duration="1171000" />
-      <workItem from="1769640476860" duration="24806000" />
+      <workItem from="1769640476860" duration="34273000" />
+      <workItem from="1769826504076" duration="9498000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -214,7 +229,39 @@
       <option name="project" value="LOCAL" />
       <updated>1769788458122</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: added gitignore">
+      <option name="closed" value="true" />
+      <created>1769790617619</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1769790617619</updated>
+    </task>
+    <task id="LOCAL-00016" summary="another test commit">
+      <option name="closed" value="true" />
+      <created>1769790920056</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1769790920056</updated>
+    </task>
+    <task id="LOCAL-00017" summary="another test commit">
+      <option name="closed" value="true" />
+      <created>1769817464532</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1769817464532</updated>
+    </task>
+    <task id="LOCAL-00018" summary="another test commit">
+      <option name="closed" value="true" />
+      <created>1769827323706</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1769827323706</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +300,8 @@
     <MESSAGE value="feat: collidable interface added" />
     <MESSAGE value="feat: GameWorld methods completed + other miscellaneous methods" />
     <MESSAGE value="feat: updates to Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: updates to Game" />
+    <MESSAGE value="feat: added gitignore" />
+    <MESSAGE value="another test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="another test commit" />
   </component>
 </project>

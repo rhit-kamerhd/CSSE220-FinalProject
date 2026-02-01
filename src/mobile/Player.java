@@ -1,34 +1,61 @@
 package mobile;
 
 import game.GameWorld;
-
 import game.Position;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
-public class Player extends Entity{
-    private int lives;
-    private int score;
-    private Position pos;
+public class Player extends Entity {
 
-    public Player(Position p){
-        lives = 3; score = 0; pos = p;
+    private static int lives = 3;
+    private int score = 0;
+    private InputHandler input;
+    private Image sprite;
+
+    public Player(Position p, InputHandler input) {
+        setPosition(p);
+        this.input = input;
+        sprite = new ImageIcon(getClass().getResource("/sprites/player_sprite.png")).getImage();
     }
 
-    //TODO: complete method tryMove(mobile.Direction d, GameWorld world)
-    public void tryMove(Direction d, GameWorld world){
-
+    public Image getSprite() {
+        return sprite;
     }
 
-    //TODO: complete method loseLife()
-    public void loseLife(){
-
+    public void tryMove(Direction d, GameWorld world) {
+        if (d == null) return;
+        Position next = getPosition().translate(d);
+        if (!world.isWall(next)) setPosition(next);
     }
 
-    //TODO: complete Method pushAttempt(mobile.Direction d, GameWorld world)
-    public void pushAttempt(Direction d, GameWorld world){
-
+    public void loseLife() {
+        if (lives > 0) lives--;
     }
 
+    public static int getLivesRemaining() {
+        return lives;
+    }
 
+    public void pushAttempt(Direction d, GameWorld world) {
+        if (d == null) return;
+        Position adjacent = getPosition().translate(d);
+        Zombie z = world.getZombieAt(adjacent);
+        if (z == null) return;
+        Position launchPos = adjacent;
+        for (int i = 0; i < 4; i++) {
+            Position next = launchPos.translate(d);
+            if (world.isWall(next)) break;
+            launchPos = next;
+        }
 
+        z.setPosition(launchPos);
+    }
 
+    @Override
+    public void update(GameWorld world) {
+        Direction d = input.getMoveDirection();
+        tryMove(d, world);
+        if (input.isPushPressed()) pushAttempt(d, world);
+    }
 }
+
