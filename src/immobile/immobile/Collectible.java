@@ -1,4 +1,4 @@
-package immobile;
+package immobile.immobile;
 
 import javax.swing.text.Position;
 
