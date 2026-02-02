@@ -11,12 +11,22 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Observer;
 
 public class HUD extends JPanel{
     private boolean showPauseOverlay;
     private static JButton unpauseButton = null;
     private static JLabel levelLabel = null;
     private static final int TILE = 25;
+
+    public static void renderZombies(Zombie zombie, GameWorld world, int TILE_SIZE, Graphics g, ImageObserver observer) throws IOException {
+        BufferedImage zombieSprite = load("/zombie_sprite.png");
+        Position zombiePos = zombie.getPosition();
+        int x = TILE_SIZE * zombiePos.col;
+        int y = TILE_SIZE * zombiePos.row;
+        g.drawImage(zombieSprite, x, y, TILE_SIZE, TILE_SIZE, observer);
+    }
 
     @Override
     protected void paintComponent(Graphics g) {

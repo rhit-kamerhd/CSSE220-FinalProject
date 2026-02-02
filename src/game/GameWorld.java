@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class GameWorld {
     private static Tile[][] grid;
     private final Player player;
-    private final ArrayList<Zombie> zombies;
+    public ArrayList<Zombie> zombies;
     private final ArrayList<Collectible> collectibles;
     private static int gemsRemaining;
     private GameStatus status;
