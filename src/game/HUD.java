@@ -9,20 +9,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.awt.Dimension;
 
 public class HUD extends JPanel{
     private boolean showPauseOverlay;
     private static JButton unpauseButton = null;
     private static JLabel levelLabel = null;
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(1050, 1050);
-    }
+    private static final int TILE = 25;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -39,47 +33,76 @@ public class HUD extends JPanel{
         add(levelLabel); add(unpauseButton); setFocusable(true);
     }
 
+
+
+    public static BufferedImage load(String path) throws IOException {
+        var in = HUD.class.getResourceAsStream(path);
+        if (in == null) throw new IllegalStateException("Missing resource: " + path);
+        return ImageIO.read(in);
+    }
+
+    public static void renderPlayer(Player player, GameWorld world, int TILE_SIZE, Graphics g, ImageObserver observer){
+        BufferedImage playerSprite = player.sprite;
+        Position playerPos = world.getPlayer().getPosition();
+        int x = TILE_SIZE * playerPos.col;
+        int y = TILE_SIZE * playerPos.row;
+        g.drawImage(playerSprite, x, y, TILE_SIZE, TILE_SIZE, observer);
+    }
+
+
+    public static void renderWorld(GameWorld world, Graphics g, ImageObserver observer) throws IOException {
+        BufferedImage wallSprite = load("/wall_sprite.png");
+        BufferedImage floorSprite = load("/floor_sprite.png");
+        BufferedImage exitSprite = load("/exit_sprite.png");
+        BufferedImage gemSprite = load("/coin_sprite.png");
+        BufferedImage playerSprite = load("/player_sprite.png");
+        BufferedImage zombieSprite = load("/zombie_sprite.png");
+        Tile[][] map = GameWorld.getMap();
+        for (int row = 0; row < map.length; row++) {
+            for (int col = 0; col < map[row].length; col++) {
+                int x = col * TILE;
+                int y = row * TILE;
+                Tile t = map[row][col];
+                switch (t) {
+                    case null -> {
+                        g.drawImage(floorSprite, x, y, TILE, TILE, observer);
+                    }
+                    case Wall _ -> g.drawImage(wallSprite, x, y, TILE, TILE, observer);
+                    case ExitTile _ -> g.drawImage(exitSprite, x, y, TILE, TILE, observer);
+                    default -> g.drawImage(floorSprite, x, y, TILE, TILE, observer);
+                }
+            }
+        }
+        for (Collectible gem : world.getCollectibles()) {
+            Position p = (Position) gem.getPosition();
+            int[] rc = p.getPosition();
+            int x = rc[1] * TILE;
+            int y = rc[0] * TILE;
+            g.drawImage(gemSprite, x, y, TILE, TILE, observer);
+        }
+        for (Zombie z : world.getZombies()) {
+            Position p = z.getPosition();
+            int[] rc = p.getPosition();
+            int x = rc[1] * TILE;
+            int y = rc[0] * TILE;
+            g.drawImage(zombieSprite, x, y, TILE, TILE, observer);
+        }
+        Position p = world.getPlayerPosition();
+        int[] rc = p.getPosition();
+        int x = rc[1] * TILE;
+        int y = rc[0] * TILE;
+        g.drawImage(playerSprite, x, y, TILE, TILE, observer);
+    }
+
     public void renderHUD(JPanel hud){
         int totalGems = Game.levelNum + 1;
-        setFont(new Font("Cambria", Font.BOLD, 16)); hud.setLocation(0, 0);
+        setFont(new Font("Cambria", Font.BOLD, 16)); hud.setLocation(0  , 0);
         JTextField lives = new JTextField("Lives: " + Player.getLivesRemaining() + "/3");
         JTextField gemsCollected = new JTextField("Gems Collected: " + GameWorld.getGemsRemaining() + "/" + totalGems);
         JTextField level = new JTextField("Level " + Game.levelNum);
         level.setLocation(1000, 0);
         lives.setLocation(0, 0); gemsCollected.setLocation(0, 50);
         hud.add(lives); hud.add(gemsCollected); hud.add(level);
-    }
-
-    public static void renderWorld(GameWorld world, Graphics g, ImageObserver observer) throws IOException {
-        BufferedImage wallSprite = ImageIO.read(new File("../sprites/wall_sprite.png"));
-        BufferedImage floorSprite = ImageIO.read(new File("../sprites/floor_sprite"));
-        BufferedImage exitSprite = ImageIO.read(new File("../sprites/exit_sprite"));
-        BufferedImage gemSprite =  ImageIO.read(new File("../sprites/gem_sprite"));
-        BufferedImage playerSprite = ImageIO.read(new File("../sprites/player_sprite"));
-        BufferedImage zombieSprite = ImageIO.read(new File("../sprites/zombie_sprite"));
-        Tile[][] map = GameWorld.getMap();
-        ArrayList<Collectible> collectibles = world.getCollectibles();
-        ArrayList<Zombie> zombies = world.getZombies();
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++){
-                int xCoordinate = (36 * i); int yCoordinate = -(36 * j);
-                if (map[i][j] instanceof Wall) g.drawImage(wallSprite, xCoordinate, yCoordinate, observer);
-                if (map[i][j] instanceof FloorTile) g.drawImage(floorSprite, xCoordinate, yCoordinate, observer);
-                if (map[i][j] instanceof ExitTile) g.drawImage(exitSprite, xCoordinate, yCoordinate, observer);
-            }}
-        for (Collectible gem : collectibles){
-            Position gemPos = (Position) gem.getPosition(); int[] c1 = gemPos.getPosition();
-            int xCoordinate = 36 * c1[0]; int yCoordinate = (-36) * c1[1];
-            g.drawImage(gemSprite, xCoordinate, yCoordinate, observer);
-        }
-        for (Zombie zombie : zombies){
-            Position zPos = zombie.getPosition(); int[] c2 = zPos.getPosition();
-            int xCoordinate = 36 * c2[0]; int yCoordinate = (-36) * c2[2];
-            g.drawImage(zombieSprite, xCoordinate, yCoordinate, observer);
-        }
-        Position playerPosition = world.getPlayerPosition(); int[] c3 = playerPosition.getPosition();
-        int xCoordinate = 36 * c3[0]; int yCoordinate = (-36) * c3[1];
-        g.drawImage(playerSprite, xCoordinate, yCoordinate, observer);
     }
 
     public void renderPauseMenu(){
@@ -99,5 +122,4 @@ public class HUD extends JPanel{
         unpauseButton.setVisible(false);
         repaint();
     }
-
 }

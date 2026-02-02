@@ -5,6 +5,7 @@ import mobile.InputHandler;
 import mobile.Player;
 import mobile.Zombie;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -179,7 +180,7 @@ public class WorldBuilder {
             {0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0},
             {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
             {0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+            {0,1,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
             {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0},
             {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
             {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0},
@@ -209,9 +210,9 @@ public class WorldBuilder {
     }
 
     //DONE: complete method buildFromTemplate(String TemplateID)
-    public static GameWorld buildFromTemplate(int levelNum) {
+    public static GameWorld buildFromTemplate(int levelNum) throws IOException {
         int[][] template = mapTemplates.get(levelNum);
-        Tile[][] grid = new Tile[36][36];
+        Tile[][] grid = new Tile[35][35];
         ArrayList<Collectible> collectibles = new ArrayList<>();
         Player player = null;
         InputHandler input = new InputHandler();
@@ -223,14 +224,14 @@ public class WorldBuilder {
                 if (template[i][j] == 2) grid[i][j] = new ExitTile();
                 if (template[i][j] == 3) {
                     grid[i][j] = new FloorTile();
-                    player = new Player(new Position(36 - i, j), input);
+                    player = new Player(new Position(i, j), input);
                 }
                 if (template[i][j] == 4) {
                     grid[i][j] = new FloorTile();
-                    collectibles.add(new Gem(new Position(36 - i, j)));
+                    collectibles.add(new Gem(new Position(i, j)));
                 }
                 if (template[i][j] == 5){
-                    Position zPos = new Position(i, -j);
+                    Position zPos = new Position(i, j);
                     zombies.add(new Zombie(zPos));
                 }
             }

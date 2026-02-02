@@ -20,6 +20,10 @@ public class GameWorld {
         status = GameStatus.RUNNING;
     }
 
+    public Player getPlayer(){
+        return this.player;
+    }
+
     public boolean isWalkable(Position pos){
         int[] coords = pos.getPosition(); Tile tile = grid[coords[0]][coords[1]];
         if (tile instanceof FloorTile){
@@ -80,7 +84,7 @@ public class GameWorld {
 
     public boolean isWall(Position p) {
         int xPos = p.getPosition()[0]; int yPos = p.getPosition()[1];
-        return !(grid[xPos][yPos] instanceof Wall);
+        return (grid[xPos][yPos] instanceof Wall);
     }
 
     public GameStatus getStatus() {

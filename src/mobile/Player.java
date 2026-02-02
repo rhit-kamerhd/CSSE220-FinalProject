@@ -1,31 +1,29 @@
 package mobile;
 
 import game.GameWorld;
+import game.HUD;
 import game.Position;
-import javax.swing.ImageIcon;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Player extends Entity {
 
     private static int lives = 3;
     private int score = 0;
     private InputHandler input;
-    private Image sprite;
+    public final BufferedImage sprite;
 
-    public Player(Position p, InputHandler input) {
-        setPosition(p);
-        this.input = input;
-        sprite = new ImageIcon(getClass().getResource("/sprites/player_sprite.png")).getImage();
-    }
-
-    public Image getSprite() {
-        return sprite;
-    }
+    public Player(Position p, InputHandler input) throws IOException {
+        setPosition(p); this.input = input;
+        sprite = HUD.load("/player_sprite.png");
+        }
 
     public void tryMove(Direction d, GameWorld world) {
         if (d == null) return;
         Position next = getPosition().translate(d);
-        if (!world.isWall(next)) setPosition(next);
+        if (!world.isWall(next)) {
+            setPosition(next);
+        }
     }
 
     public void loseLife() {
@@ -47,7 +45,6 @@ public class Player extends Entity {
             if (world.isWall(next)) break;
             launchPos = next;
         }
-
         z.setPosition(launchPos);
     }
 
