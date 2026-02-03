@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="fix: THE PLAYER CAN FINALLY FRICKING MOVE">
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="Milestone 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +108,7 @@
       <workItem from="1769460770813" duration="6521000" />
       <workItem from="1769638528800" duration="1171000" />
       <workItem from="1769640476860" duration="34273000" />
-      <workItem from="1769826504076" duration="36233000" />
+      <workItem from="1769826504076" duration="37898000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -290,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770001528851</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Milestone 1">
+      <option name="closed" value="true" />
+      <created>1770003299783</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1770003299783</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +339,7 @@
     <MESSAGE value="fix: various fixes on Game/GameWorld" />
     <MESSAGE value="fix: hopefully final fix to Game.main(String[] args)" />
     <MESSAGE value="fix: THE PLAYER CAN FINALLY FRICKING MOVE" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: THE PLAYER CAN FINALLY FRICKING MOVE" />
+    <MESSAGE value="Milestone 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone 1" />
   </component>
 </project>
