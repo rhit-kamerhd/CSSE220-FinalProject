@@ -6,20 +6,33 @@ import game.Position;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
+/**
+ * Represents an enemy zombie that moves randomly.
+ */
 public class Zombie extends Entity {
-    private Position pos;
-    private final Random rand = new Random();
-    private Image sprite = null;
 
+    private final Random rand = new Random();
+    private Image sprite;
+
+    /**
+     * Creates a zombie.
+     * @param p starting position
+     */
     public Zombie(Position p) {
         setPosition(p);
         sprite = new ImageIcon(getClass().getResource("/zombie_sprite.png")).getImage();
     }
 
+    /** @return zombie sprite image */
     public Image getSprite() {
         return sprite;
     }
 
+    /**
+     * Chooses a random valid movement direction.
+     * @param world game world
+     * @return Direction or null if none valid
+     */
     public Direction chooseMove(GameWorld world) {
         Direction[] dirs = Direction.values();
         for (int i = 0; i < 10; i++) {
@@ -30,6 +43,9 @@ public class Zombie extends Entity {
         return null;
     }
 
+    /**
+     * Attempts to move zombie.
+     */
     public void tryMove(Direction d, GameWorld world) {
         if (d == null) return;
         Position next = getPosition().translate(d);
