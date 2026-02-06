@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
  */
 public class InputHandler implements KeyListener {
 
-    private boolean up, down, left, right, push, pause;
+    private boolean up, down, left, right, push, pause, pickup;
 
     /**
      * Determines the player's movement direction based on keys held.
@@ -23,6 +23,7 @@ public class InputHandler implements KeyListener {
         if (right) return Direction.RIGHT;
         return null;
     }
+    
 
     /**
      * Allows push to occur only once per key press.
@@ -33,6 +34,17 @@ public class InputHandler implements KeyListener {
         push = false;
         return true;
     }
+    
+    /**
+     * Allows pickup to occur only once per key press.
+     * @return true if pickup action should trigger
+     */
+    public boolean consumePickup() {
+        if (!pickup) return false;
+        pickup = false;
+        return true;
+    }
+
 
     /**
      * @return true if pause key is pressed
@@ -40,7 +52,7 @@ public class InputHandler implements KeyListener {
     public boolean isPausePressed() {
         return pause;
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
@@ -50,6 +62,7 @@ public class InputHandler implements KeyListener {
         if (k == KeyEvent.VK_D || k == KeyEvent.VK_RIGHT) right = true;
         if (k == KeyEvent.VK_SPACE) push = true;
         if (k == KeyEvent.VK_P) pause = true;
+        if (k == KeyEvent.VK_E) pickup = true;
     }
 
     @Override
@@ -65,4 +78,5 @@ public class InputHandler implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {}
 }
+
 
