@@ -13,29 +13,28 @@ import javax.swing.*;
 
 public class Game extends JPanel{
     private final GameWorld world;
-    private static HUD hud;
+    private static HUD hud = new HUD();
     private static boolean paused;
     public static int levelNum = 1;
     private static JPanel panel;
     private InputHandler input;
     private KeyEvent event;
     private int time = 0;
+    private static JFrame frame;
 
     public Game(GameWorld world) {
-        this.world = world;
-        hud = new HUD();
-        setFocusable(true);
+        this.world = world; setFocusable(true);
     }
     static void main(String[] args) throws IOException {
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         Game game = new Game(world); InputHandler input = new InputHandler();
-        JFrame frame = new JFrame("Cave Game");
+        frame = new JFrame("Cave Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(game);
         frame.setSize(new Dimension(900, 1050));
         frame.setVisible(true); game.setFocusable(true);
         game.requestFocusInWindow(); game.addKeyListener(input);
-        Timer loop = new Timer(20, e -> {
+        Timer loop = new Timer(5, e -> {
             game.time++;
             if (!paused) {
                 Direction d = input.getMoveDirection();
@@ -60,10 +59,13 @@ public class Game extends JPanel{
         try {
             Player player = world.getPlayer();
             HUD.renderWorld(world, g, this);
+//            hud.renderHUD(panel);
+//            frame.add(panel);
             HUD.renderPlayer(player, world, 25, g, this);
             for (Zombie z : world.zombies) {
                 HUD.renderZombies(z, world, 25, g, this);
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
