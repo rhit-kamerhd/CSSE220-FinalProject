@@ -5,7 +5,7 @@ import game.Position;
 
 /**
  * Base class for all movable objects in the game world.
- * Stores position and defines the update behavior contract.
+ * Stores position and defines behavior.
  */
 public abstract class Entity {
 
