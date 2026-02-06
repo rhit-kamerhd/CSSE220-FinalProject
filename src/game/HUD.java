@@ -17,10 +17,7 @@ public class HUD extends JPanel {
     private boolean showPauseOverlay;
     private static JButton unpauseButton = null;
     private static JLabel levelLabel = null;
-
     private static final int TILE = 20;
-
-
     private static BufferedImage wallSprite;
     private static BufferedImage floorSprite;
     private static BufferedImage exitSprite;
@@ -28,24 +25,18 @@ public class HUD extends JPanel {
     private static BufferedImage playerSprite;
     private static BufferedImage zombieSprite;
 
-
     public HUD() {
         Game.levelNum = 1;
-
         setLayout(null);
-
         levelLabel = new JLabel();
         levelLabel.setForeground(Color.WHITE);
         levelLabel.setFont(new Font("Cambria", Font.BOLD, 18));
         levelLabel.setVisible(false);
-
         unpauseButton = new JButton("Unpause");
         unpauseButton.setFocusable(false);
         unpauseButton.setVisible(false);
-
         add(levelLabel);
         add(unpauseButton);
-
         setFocusable(true);
     }
 
@@ -97,15 +88,11 @@ public class HUD extends JPanel {
   
     public static void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
         Tile[][] map = GameWorld.getMap();
-
-        
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 int x = col * TILE;
                 int y = row * TILE;
-
                 Tile t = map[row][col];
-
                 if (t == null) {
                     g.drawImage(floorSprite, x, y, TILE, TILE, observer);
                 } else if (t instanceof Wall) {
@@ -153,25 +140,19 @@ public class HUD extends JPanel {
         Dimension size = getSize();
         int centerX = size.width / 2;
         int centerY = size.height / 2;
-
         int labelW = 200;
         int labelH = 30;
         levelLabel.setBounds(centerX - labelW / 2, centerY - 90, labelW, labelH);
-
         int buttonW = 140;
         int buttonH = 35;
         unpauseButton.setBounds(centerX - buttonW / 2, centerY - 30, buttonW, buttonH);
-
         levelLabel.setVisible(true);
         unpauseButton.setVisible(true);
-
         revalidate();
         repaint();
     }
 
-    /**
-     * Hides the pause menu overlay.
-     */
+ 
     public void hidePauseMenu() {
         showPauseOverlay = false;
         levelLabel.setVisible(false);
