@@ -25,23 +25,25 @@ public class Game extends JPanel {
         setFocusable(true);
     }
 
-    static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
-        HUD.initAssets(); Game game = new Game(world);
+        HUD.initAssets();
+        Game game = new Game(world);
         InputHandler input = new InputHandler();
         world.getPlayer().setInputHandler(input);
         JFrame frame = new JFrame("Cave Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(game);
         frame.setSize(new Dimension(900, 1050));
-        game.addKeyListener(input); game.setFocusable(true);
+        game.addKeyListener(input);
+        game.setFocusable(true);
         frame.setVisible(true);
         SwingUtilities.invokeLater(game::requestFocusInWindow);
         Timer loop = new Timer(100, e -> {
             game.time++;
             if (game.time % 60 == 0) game.requestFocusInWindow();
             if (!paused) {
-            	world.getPlayer().update(world);
+            	world.getPlayer().update(world);          
                 if (game.time % 4 == 0) {
                     for (Zombie z : world.getZombies()) {
                         Direction zMove = z.chooseMove(world);
@@ -56,10 +58,11 @@ public class Game extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponent(g); 
         HUD.renderWorld(world, g, this);
-        if (paused) hud.renderPauseMenu();
-        Toolkit.getDefaultToolkit().sync();
+        if (paused) {
+            hud.renderPauseMenu();
+        }
     }
 }
 
