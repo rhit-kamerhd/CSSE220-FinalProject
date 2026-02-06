@@ -3,7 +3,6 @@ package mobile;
 import game.GameWorld;
 import game.HUD;
 import game.Position;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -12,24 +11,15 @@ import java.io.IOException;
  * Handles movement, zombie knockback (space), and life tracking.
  */
 public class Player extends Entity {
-
     private static int lives = 3;
-
     private int score = 0;
     private InputHandler input;
-
-    /** Player sprite image. */
     public final BufferedImage sprite;
-
-    /** Respawn position after taking damage. */
     private final Position spawn;
-
-    /** Last non-null movement direction (used for space knockback). */
     private Direction lastDir = Direction.RIGHT;
 
     /**
      * Constructs a Player at a given position.
-     *
      * @param p starting position (also used as respawn position)
      * @param input input handler for controls
      * @throws IOException if sprite file cannot be loaded
@@ -43,7 +33,6 @@ public class Player extends Entity {
 
     /**
      * Sets the input handler used to control this player.
-     *
      * @param input input handler for movement/actions
      */
     public void setInputHandler(InputHandler input) {
@@ -52,13 +41,11 @@ public class Player extends Entity {
 
     /**
      * Attempts to move the player one tile.
-     *
      * @param d direction to move
      * @param world game world for collision checks
      */
     public void tryMove(Direction d, GameWorld world) {
         if (d == null) return;
-
         Position next = getPosition().translate(d);
         if (!world.isWall(next)) {
             setPosition(next);
@@ -67,7 +54,6 @@ public class Player extends Entity {
 
     /**
      * Gets remaining lives.
-     *
      * @return number of lives remaining
      */
     public static int getLivesRemaining() {
@@ -76,21 +62,16 @@ public class Player extends Entity {
 
     /**
      * Moves the zombie exactly four tiles away from the player in the given direction,
-     * stopping early if a wall blocks the path.
-     *
+     * stopping if a wall blocks the path.
      * @param d direction to knock the zombie
      * @param world game world
      */
     public void knockbackAdjacentZombie(GameWorld world) {
-        // check each adjacent tile for a zombie
         Direction[] dirs = {Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT};
-
-        for (Direction d : dirs) {
+        for (Direction d: dirs) {
             Position adjacent = getPosition().translate(d);
             Zombie z = world.getZombieAt(adjacent);
             if (z == null) continue;
-
-            // move zombie 4 tiles away in direction d (away from player)
             Position dest = adjacent;
             for (int i = 0; i < 4; i++) {
                 Position next = dest.translate(d);
@@ -98,7 +79,7 @@ public class Player extends Entity {
                 dest = next;
             }
             z.setPosition(dest);
-            return; // only knock back one zombie per SPACE press
+            return; 
         }
     }
     
@@ -113,24 +94,17 @@ public class Player extends Entity {
 
     /**
      * Updates player each game tick.
-     *
      * @param world game world
      */
     @Override
     public void update(GameWorld world) {
         if (input == null) return;
-
-        // Movement
         Direction d = input.getMoveDirection();
         if (d != null) lastDir = d;
         tryMove(d, world);
-
-        // SPACE: knock zombie back 4 tiles
         if (input.consumePush()) {
             knockbackAdjacentZombie(world);
         }
-
-        // Zombie collision => lose life
         if (world.getZombieAt(getPosition()) != null) {
             onZombieHit();
         }
