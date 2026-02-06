@@ -120,7 +120,7 @@ public class HUD extends JPanel {
 
        
         for (Collectible gem : world.getCollectibles()) {
-            Position p = (Position) gem.getPosition();
+            Position p = gem.getPosition();
             int[] rc = p.getPosition();
             int x = rc[1] * TILE;
             int y = rc[0] * TILE;

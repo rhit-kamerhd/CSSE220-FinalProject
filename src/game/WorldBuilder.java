@@ -228,7 +228,8 @@ public class WorldBuilder {
                 }
                 if (template[i][j] == 4) {
                     grid[i][j] = new FloorTile();
-                    collectibles.add(new Gem(new Position(i, j)));
+                    Position gemPos = new Position(i, j);
+                    collectibles.add(new Gem(gemPos));
                 }
                 if (template[i][j] == 5){
                     Position zPos = new Position(i, j);
