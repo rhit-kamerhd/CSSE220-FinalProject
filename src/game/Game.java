@@ -56,7 +56,7 @@ public class Game extends JPanel {
             	world.getPlayer().update(world);
 
                 
-                if (game.time % 30 == 0) {
+                if (game.time % 4 == 0) {
                     for (Zombie z : world.getZombies()) {
                         Direction zMove = z.chooseMove(world);
                         z.tryMove(zMove, world);
