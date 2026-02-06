@@ -3,6 +3,8 @@ package mobile;
 import game.GameWorld;
 import game.HUD;
 import game.Position;
+import immobile.Collectible;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -63,15 +65,19 @@ public class Player extends Entity {
     /**
      * Moves the zombie exactly four tiles away from the player in the given direction,
      * stopping if a wall blocks the path.
+     *
      * @param d direction to knock the zombie
      * @param world game world
      */
     public void knockbackAdjacentZombie(GameWorld world) {
+       
         Direction[] dirs = {Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT};
-        for (Direction d: dirs) {
+
+        for (Direction d : dirs) {
             Position adjacent = getPosition().translate(d);
             Zombie z = world.getZombieAt(adjacent);
             if (z == null) continue;
+           
             Position dest = adjacent;
             for (int i = 0; i < 4; i++) {
                 Position next = dest.translate(d);
@@ -83,7 +89,26 @@ public class Player extends Entity {
         }
     }
     
-
+    /**
+     * Handles player picking up gems on adjacent tiles 
+     * 
+     * @param d directions to look for gems
+     * @param world game world
+     */
+    public void Gempickup(GameWorld world) {
+    Direction[] dirs = {Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT};
+    for (Direction d : dirs) {
+        Position adjacent = getPosition().translate(d);
+        Collectible g = world.collectibleAt(adjacent);
+        if (g==null) continue;
+        else {
+        	world.removeCollectible(g);
+        	score++;
+        }
+        return;
+    }
+	}
+    
     /**
      * Handles player being hit by a zombie: lose one life and respawn.
      */
@@ -104,6 +129,7 @@ public class Player extends Entity {
         tryMove(d, world);
         if (input.consumePush()) {
             knockbackAdjacentZombie(world);
+            Gempickup(world);
         }
         if (world.getZombieAt(getPosition()) != null) {
             onZombieHit();
