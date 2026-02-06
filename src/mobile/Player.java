@@ -3,48 +3,71 @@ package mobile;
 import game.GameWorld;
 import game.HUD;
 import game.Position;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
  * Represents the player entity.
- * Handles movement, zombie pushing, and life tracking.
+ * Handles movement, zombie knockback (space), and life tracking.
  */
 public class Player extends Entity {
 
     private static int lives = 3;
+
     private int score = 0;
     private InputHandler input;
+
+    /** Player sprite image. */
     public final BufferedImage sprite;
+
+    /** Respawn position after taking damage. */
+    private final Position spawn;
+
+    /** Last non-null movement direction (used for space knockback). */
+    private Direction lastDir = Direction.RIGHT;
 
     /**
      * Constructs a Player at a given position.
-     * @param p starting position
+     *
+     * @param p starting position (also used as respawn position)
      * @param input input handler for controls
+     * @throws IOException if sprite file cannot be loaded
      */
     public Player(Position p, InputHandler input) throws IOException {
         setPosition(p);
+        this.spawn = p;
         this.input = input;
-        sprite = HUD.load("/player_sprite.png");
+        this.sprite = HUD.load("/player_sprite.png");
     }
 
     /**
-     * Attempts to move the player.
+     * Sets the input handler used to control this player.
+     *
+     * @param input input handler for movement/actions
+     */
+    public void setInputHandler(InputHandler input) {
+        this.input = input;
+    }
+
+    /**
+     * Attempts to move the player one tile.
+     *
      * @param d direction to move
      * @param world game world for collision checks
      */
     public void tryMove(Direction d, GameWorld world) {
         if (d == null) return;
-        Position next = getPosition().translate(d);
-        if (!world.isWall(next)) setPosition(next);
-    }
 
-    /** Decreases player lives by one. */
-    public void loseLife() {
-        if (lives > 0) lives--;
+        Position next = getPosition().translate(d);
+        if (!world.isWall(next)) {
+            setPosition(next);
+        }
     }
 
     /**
+     * Gets remaining lives.
+     *
      * @return number of lives remaining
      */
     public static int getLivesRemaining() {
@@ -52,37 +75,64 @@ public class Player extends Entity {
     }
 
     /**
-     * Attempts to push a zombie in a direction.
-     * @param d direction of push
+     * Moves the zombie exactly four tiles away from the player in the given direction,
+     * stopping early if a wall blocks the path.
+     *
+     * @param d direction to knock the zombie
      * @param world game world
      */
-    public void pushAttempt(Direction d, GameWorld world) {
-        if (d == null) return;
+    public void knockbackAdjacentZombie(GameWorld world) {
+        // check each adjacent tile for a zombie
+        Direction[] dirs = {Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT};
 
-        Position adjacent = getPosition().translate(d);
-        Zombie z = world.getZombieAt(adjacent);
-        if (z == null) return;
+        for (Direction d : dirs) {
+            Position adjacent = getPosition().translate(d);
+            Zombie z = world.getZombieAt(adjacent);
+            if (z == null) continue;
 
-        Position launchPos = adjacent;
-        for (int i = 0; i < 4; i++) {
-            Position next = launchPos.translate(d);
-            if (world.isWall(next)) break;
-            launchPos = next;
+            // move zombie 4 tiles away in direction d (away from player)
+            Position dest = adjacent;
+            for (int i = 0; i < 4; i++) {
+                Position next = dest.translate(d);
+                if (world.isWall(next)) break;
+                dest = next;
+            }
+            z.setPosition(dest);
+            return; // only knock back one zombie per SPACE press
         }
-        z.setPosition(launchPos);
+    }
+    
+
+    /**
+     * Handles player being hit by a zombie: lose one life and respawn.
+     */
+    private void onZombieHit() {
+        if (lives > 0) lives--;
+        setPosition(spawn);
     }
 
     /**
      * Updates player each game tick.
+     *
      * @param world game world
      */
     @Override
     public void update(GameWorld world) {
+        if (input == null) return;
+
+        // Movement
         Direction d = input.getMoveDirection();
+        if (d != null) lastDir = d;
         tryMove(d, world);
 
+        // SPACE: knock zombie back 4 tiles
         if (input.consumePush()) {
-            pushAttempt(d, world);
+            knockbackAdjacentZombie(world);
+        }
+
+        // Zombie collision => lose life
+        if (world.getZombieAt(getPosition()) != null) {
+            onZombieHit();
         }
     }
 }
