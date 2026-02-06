@@ -77,15 +77,19 @@ public class GameWorld {
 
     public Zombie getZombieAt(Position p) {
         for (Zombie z : zombies) {
-            if (z.getPosition() == p) return z;
+            Position zp = z.getPosition();
+            if (zp.row == p.row && zp.col == p.col) return z;
         }
         return null;
     }
+
 
     public boolean isWall(Position p) {
         int xPos = p.getPosition()[0]; int yPos = p.getPosition()[1];
         return (grid[xPos][yPos] instanceof Wall);
     }
+    
+
 
     public GameStatus getStatus() {
         return status;
