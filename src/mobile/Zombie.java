@@ -4,6 +4,7 @@ import java.util.Random;
 import game.GameWorld;
 import game.HUD;
 import game.Position;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Image;
@@ -11,10 +12,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * Represents an enemy zombie that moves randomly. Extends Entity
+ * Represents an enemy zombie that moves randomly.
+ * @author Daniel Vermilya
  */
 public class Zombie extends Entity {
-
     private final Random rand = new Random();;
     public final BufferedImage sprite;
     
@@ -28,14 +29,14 @@ public class Zombie extends Entity {
     }
 
     /**
-     * Chooses a random direction.
+     * Chooses a random valid movement direction.
      * @param world game world
      * @return Direction or null if none valid
      */
     public Direction chooseMove(GameWorld world) {
-        Direction[] directions = Direction.values();
+        Direction[] dirs = Direction.values();
         for (int i = 0; i < 10; i++) {
-            Direction d = directions[rand.nextInt(directions.length)];
+            Direction d = dirs[rand.nextInt(dirs.length)];
             Position next = getPosition().translate(d);
             if (!world.isWall(next)) return d;
         }
@@ -44,13 +45,18 @@ public class Zombie extends Entity {
 
     /**
      * Attempts to move zombie.
+     * @param world game world
      */
     public void tryMove(Direction d, GameWorld world) {
         if (d == null) return;
         Position next = getPosition().translate(d);
         if (!world.isWall(next)) setPosition(next);
     }
-
+    
+    /**
+     * Updates player each game tick.
+     * @param world game world
+     */
     @Override
     public void update(GameWorld world) {
         Direction d = chooseMove(world);

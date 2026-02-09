@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 /**
  * Handles keyboard input states for player controls.
  * Tracks movement keys and action keys like push and pause.
+ * @author Daniel Vermilya
  */
 public class InputHandler implements KeyListener {
 
@@ -52,7 +53,9 @@ public class InputHandler implements KeyListener {
     public boolean isPausePressed() {
         return pause;
     }
-    
+    /**
+     * key event pressed 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
@@ -64,7 +67,10 @@ public class InputHandler implements KeyListener {
         if (k == KeyEvent.VK_P) pause = true;
         if (k == KeyEvent.VK_E) pickup = true;
     }
-
+    
+    /**
+     * key event released 
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int k = e.getKeyCode();
@@ -74,9 +80,13 @@ public class InputHandler implements KeyListener {
         if (k == KeyEvent.VK_D || k == KeyEvent.VK_RIGHT) right = false;
         if (k == KeyEvent.VK_P) pause = false;
     }
-
+    
+    /**
+     * key event typed 
+     */
     @Override
     public void keyTyped(KeyEvent e) {}
 }
+
 
 
