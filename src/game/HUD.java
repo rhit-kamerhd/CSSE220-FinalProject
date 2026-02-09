@@ -1,7 +1,6 @@
 package game;
 
 import immobile.*;
-import mobile.Player;
 import mobile.Zombie;
 
 import javax.imageio.ImageIO;
@@ -17,7 +16,7 @@ public class HUD extends JPanel {
     private boolean showPauseOverlay;
     private static JButton unpauseButton = null;
     private static JLabel levelLabel = null;
-    private static final int TILE = 20;
+    private static final int TILE = 35;
     private static BufferedImage wallSprite;
     private static BufferedImage floorSprite;
     private static BufferedImage exitSprite;
@@ -29,7 +28,7 @@ public class HUD extends JPanel {
         Game.levelNum = 1;
         setLayout(null);
         levelLabel = new JLabel();
-        levelLabel.setForeground(Color.WHITE);
+        levelLabel.setForeground(Color.BLACK);
         levelLabel.setFont(new Font("Cambria", Font.BOLD, 18));
         levelLabel.setVisible(false);
         unpauseButton = new JButton("Unpause");
@@ -47,8 +46,7 @@ public class HUD extends JPanel {
 
 
     public static void initAssets() {
-        if (wallSprite != null) return; 
-
+        if (wallSprite != null) return;
         try {
             wallSprite = load("/wall_sprite.png");
             floorSprite = load("/floor_sprite.png");
@@ -69,7 +67,7 @@ public class HUD extends JPanel {
     }
 
 
-    public static void renderZombies(Zombie zombie, GameWorld world, int tileSize, Graphics g, ImageObserver observer) {
+    public static void renderZombies(Zombie zombie, int tileSize, Graphics g, ImageObserver observer) {
         Position zombiePos = zombie.getPosition();
         int x = tileSize * zombiePos.col;
         int y = tileSize * zombiePos.row;
@@ -77,7 +75,7 @@ public class HUD extends JPanel {
     }
 
     
-    public static void renderPlayer(Player player, GameWorld world, int tileSize, Graphics g, ImageObserver observer) {
+    public static void renderPlayer(GameWorld world, int tileSize, Graphics g, ImageObserver observer) {
         Position playerPos = world.getPlayer().getPosition();
         int x = tileSize * playerPos.col;
         int y = tileSize * playerPos.row;
@@ -85,9 +83,14 @@ public class HUD extends JPanel {
         g.drawImage(playerSprite, x, y, tileSize, tileSize, observer);
     }
 
-  
+    public static void renderHUD(){
+
+    }
     public static void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
         Tile[][] map = GameWorld.getMap();
+        Color initialColor = g.getColor(); g.setColor(Color.BLACK);
+        g.drawRect(0, 0, 870, 1020);
+        g.setColor(initialColor);
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 int x = col * TILE;
@@ -108,11 +111,12 @@ public class HUD extends JPanel {
        
         for (Collectible gem : world.getCollectibles()) {
             Position p = gem.getPosition();
-            int[] rc = p.getPosition();
-            int x = rc[1] * TILE;
-            int y = rc[0] * TILE;
-            g.drawImage(gemSprite, x, y, TILE, TILE, observer);
-        }
+            if (p != null){
+                int[] rc = p.getPosition();
+                int x = rc[1] * TILE;
+                int y = rc[0] * TILE;
+                g.drawImage(gemSprite, x, y, TILE, TILE, observer);
+        }}
 
       
         for (Zombie z : world.getZombies()) {

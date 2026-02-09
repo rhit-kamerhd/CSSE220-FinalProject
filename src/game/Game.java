@@ -2,7 +2,6 @@ package game;
 
 import mobile.Direction;
 import mobile.InputHandler;
-import mobile.Player;
 import mobile.Zombie;
 
 import javax.swing.*;
@@ -25,7 +24,7 @@ public class Game extends JPanel {
         setFocusable(true);
     }
 
-    public static void main(String[] args) throws IOException {
+    static void main() throws IOException {
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         HUD.initAssets();
         Game game = new Game(world);
@@ -34,7 +33,7 @@ public class Game extends JPanel {
         JFrame frame = new JFrame("Cave Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(game);
-        frame.setSize(new Dimension(900, 1050));
+        frame.setSize(new Dimension(990, 910));
         game.addKeyListener(input);
         game.setFocusable(true);
         frame.setVisible(true);
@@ -44,7 +43,7 @@ public class Game extends JPanel {
             if (game.time % 60 == 0) game.requestFocusInWindow();
             if (!paused) {
             	world.getPlayer().update(world);          
-                if (game.time % 4 == 0) {
+                if (game.time % 10 == 0) {
                     for (Zombie z : world.getZombies()) {
                         Direction zMove = z.chooseMove(world);
                         z.tryMove(zMove, world);

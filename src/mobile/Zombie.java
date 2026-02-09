@@ -35,7 +35,7 @@ public class Zombie extends Entity {
     public Direction chooseMove(GameWorld world) {
         Direction[] directions = Direction.values();
         for (int i = 0; i < 10; i++) {
-            Direction d = dirsections[rand.nextInt(dirstions.length)];
+            Direction d = directions[rand.nextInt(directions.length)];
             Position next = getPosition().translate(d);
             if (!world.isWall(next)) return d;
         }
