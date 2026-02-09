@@ -3,7 +3,7 @@ package mobile;
 import game.GameWorld;
 import game.HUD;
 import game.Position;
-import immobile.Collectible;
+import immobile.Gem;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,11 +14,10 @@ import java.io.IOException;
  */
 public class Player extends Entity {
     private static int lives = 3;
-    private int score = 0;
+    public int score = 0;
     private InputHandler input;
     public final BufferedImage sprite;
     private final Position spawn;
-    private Direction lastDir = Direction.RIGHT;
 
     /**
      * Constructs a Player at a given position.
@@ -58,7 +57,7 @@ public class Player extends Entity {
      * Gets remaining lives.
      * @return number of lives remaining
      */
-    public static int getLivesRemaining() {
+    public int getLivesRemaining() {
         return lives;
     }
 
@@ -66,7 +65,6 @@ public class Player extends Entity {
      * Moves the zombie exactly four tiles away from the player in the given direction,
      * stopping if a wall blocks the path.
      *
-     * @param d direction to knock the zombie
      * @param world game world
      */
     public void knockbackAdjacentZombie(GameWorld world) {
@@ -91,18 +89,17 @@ public class Player extends Entity {
     
     /**
      * Handles player picking up gems on adjacent tiles 
-     * 
-     * @param d directions to look for gems
+     *
      * @param world game world
      */
-    public void Gempickup(GameWorld world) {
+    public void gemPickup(GameWorld world) {
     Direction[] dirs = {Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT};
     for (Direction d : dirs) {
         Position adjacent = getPosition().translate(d);
-        Collectible g = world.collectibleAt(adjacent);
+        Gem g = world.gemAt(adjacent);
         if (g==null) continue;
         else {
-        	world.removeCollectible(g);
+        	world.removeGem(g);
         	score++;
         }
         return;
@@ -115,6 +112,7 @@ public class Player extends Entity {
     private void onZombieHit() {
         if (lives > 0) lives--;
         setPosition(spawn);
+        System.out.println("Lives: " + lives);
     }
 
     /**
@@ -125,14 +123,14 @@ public class Player extends Entity {
     public void update(GameWorld world) {
         if (input == null) return;
         Direction d = input.getMoveDirection();
-        if (d != null) lastDir = d;
         tryMove(d, world);
         if (input.consumePush()) {
             knockbackAdjacentZombie(world);
-            Gempickup(world);
+            gemPickup(world);
         }
         if (world.getZombieAt(getPosition()) != null) {
             onZombieHit();
         }
+        gemPickup(world);
     }
 }

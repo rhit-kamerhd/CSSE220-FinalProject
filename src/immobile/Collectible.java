@@ -6,8 +6,6 @@ public interface Collectible {
     Position pos = null;
 
 
-    default Position getPosition(){
-        return pos;
-    }
+
 
 }

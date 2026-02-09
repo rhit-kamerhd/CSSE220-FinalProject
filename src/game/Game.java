@@ -1,5 +1,8 @@
 package game;
 
+import immobile.Collectible;
+import immobile.ExitTile;
+import immobile.Gem;
 import mobile.Direction;
 import mobile.InputHandler;
 import mobile.Zombie;
@@ -13,6 +16,7 @@ public class Game extends JPanel {
 
     private final GameWorld world;
     private static HUD hud;
+    private static JPanel hudPanel;
     private static boolean paused;
     public static int levelNum = 1;
 
@@ -25,28 +29,37 @@ public class Game extends JPanel {
     }
 
     static void main() throws IOException {
+
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
-        HUD.initAssets();
         Game game = new Game(world);
+        HUD.initAssets();
+        hudPanel = new JPanel();
+        hudPanel.setBounds(900, 0, 90, 910);
+        hudPanel.add(hud);
         InputHandler input = new InputHandler();
         world.getPlayer().setInputHandler(input);
         JFrame frame = new JFrame("Cave Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(game);
         frame.setSize(new Dimension(990, 910));
+        frame.add(hudPanel, BorderLayout.EAST);
         game.addKeyListener(input);
         game.setFocusable(true);
         frame.setVisible(true);
         SwingUtilities.invokeLater(game::requestFocusInWindow);
         Timer loop = new Timer(100, e -> {
-            game.time++;
-            if (game.time % 60 == 0) game.requestFocusInWindow();
-            if (!paused) {
-            	world.getPlayer().update(world);          
-                if (game.time % 10 == 0) {
-                    for (Zombie z : world.getZombies()) {
-                        Direction zMove = z.chooseMove(world);
-                        z.tryMove(zMove, world);
+            if (world.getPlayer().getLivesRemaining() < 1) world.setStatus(GameStatus.LOST);
+            if (world.getPlayerPosition() == world.getExitTilePosition()) ExitTile.onEnter(world);
+            if (world.getStatus() == GameStatus.RUNNING) {
+                game.time++;
+                if (game.time % 60 == 0) game.requestFocusInWindow();
+                if (!paused) {
+                    world.getPlayer().update(world);
+                    if (game.time % 10 == 0) {
+                        for (Zombie z : world.getZombies()) {
+                            Direction zMove = z.chooseMove(world);
+                            z.tryMove(zMove, world);
+                        }
                     }
                 }
             }
@@ -58,7 +71,8 @@ public class Game extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); 
-        HUD.renderWorld(world, g, this);
+        hud.renderWorld(world, g, this);
+        hud.updateHUD(world, levelNum);
         if (paused) {
             hud.renderPauseMenu();
         }

@@ -167,7 +167,7 @@ public class WorldBuilder {
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,3,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0,4,1,1,0},
             {0,0,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0,1,0,1,1,1,0,1,0},
-            {0,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,4,0,1,1,5,0,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,5,0,1,0},
             {0,1,0,0,1,1,0,0,0,1,0,1,0,1,0,1,0,0,0,1,1,0,0,0,0},
             {0,1,0,1,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1,0},
             {0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0},
@@ -202,7 +202,7 @@ public class WorldBuilder {
     public static GameWorld buildFromTemplate(int levelNum) throws IOException {
         int[][] template = mapTemplates.get(levelNum);
         Tile[][] grid = new Tile[25][25];
-        ArrayList<Collectible> collectibles = new ArrayList<>();
+        ArrayList<Gem> gems = new ArrayList<>();
         Player player = null;
         InputHandler input = new InputHandler();
         ArrayList<Zombie> zombies = new ArrayList<>();
@@ -218,7 +218,7 @@ public class WorldBuilder {
                 if (template[i][j] == 4) {
                     grid[i][j] = new FloorTile();
                     Position gemPos = new Position(i, j);
-                    collectibles.add(new Gem(gemPos));
+                    gems.add(new Gem(gemPos));
                 }
                 if (template[i][j] == 5){
                     Position zPos = new Position(i, j);
@@ -226,7 +226,7 @@ public class WorldBuilder {
                 }
             }
         }
-        return new GameWorld(grid, player, zombies, collectibles);
+        return new GameWorld(grid, player, zombies, gems);
     }
 }
 

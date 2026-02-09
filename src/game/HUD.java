@@ -14,8 +14,8 @@ import java.io.IOException;
 public class HUD extends JPanel {
 
     private boolean showPauseOverlay;
-    private static JButton unpauseButton = null;
-    private static JLabel levelLabel = null;
+    private static JButton unpauseButton;
+    private final JLabel levelLabel = new JLabel();
     private static final int TILE = 35;
     private static BufferedImage wallSprite;
     private static BufferedImage floorSprite;
@@ -23,20 +23,29 @@ public class HUD extends JPanel {
     private static BufferedImage gemSprite;
     private static BufferedImage playerSprite;
     private static BufferedImage zombieSprite;
+    private final JLabel livesLabel = new JLabel();
+    private final JLabel gemsLabel = new JLabel();
 
     public HUD() {
-        Game.levelNum = 1;
-        setLayout(null);
-        levelLabel = new JLabel();
-        levelLabel.setForeground(Color.BLACK);
-        levelLabel.setFont(new Font("Cambria", Font.BOLD, 18));
-        levelLabel.setVisible(false);
-        unpauseButton = new JButton("Unpause");
-        unpauseButton.setFocusable(false);
-        unpauseButton.setVisible(false);
-        add(levelLabel);
-        add(unpauseButton);
-        setFocusable(true);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setOpaque(true);
+        livesLabel.setLocation(900, 50); gemsLabel.setLocation(900, 100);
+        JButton pauseButton = new JButton("Pause");
+        pauseButton.setLocation(900, 200);
+        levelLabel.setLocation(900, 150);
+        add(livesLabel);
+        add(gemsLabel); add(levelLabel);
+        add(Box.createVerticalStrut(10)); add(pauseButton);
+        livesLabel.setText("Lives: "); gemsLabel.setText("Gems: ");
+        levelLabel.setText("Level: ");
+    }
+
+    public void updateHUD(GameWorld world, int levelNum) {
+        livesLabel.setText("Lives: " + world.getPlayer().getLivesRemaining() + "/3");
+        levelLabel.setText("Level: " + levelNum);
+        int total = 5;
+        int collected = total - world.getGemsRemaining();
+        gemsLabel.setText("Gems: " + collected + "/" + total);
     }
 
     @Override
@@ -67,26 +76,7 @@ public class HUD extends JPanel {
     }
 
 
-    public static void renderZombies(Zombie zombie, int tileSize, Graphics g, ImageObserver observer) {
-        Position zombiePos = zombie.getPosition();
-        int x = tileSize * zombiePos.col;
-        int y = tileSize * zombiePos.row;
-        g.drawImage(zombieSprite, x, y, tileSize, tileSize, observer);
-    }
-
-    
-    public static void renderPlayer(GameWorld world, int tileSize, Graphics g, ImageObserver observer) {
-        Position playerPos = world.getPlayer().getPosition();
-        int x = tileSize * playerPos.col;
-        int y = tileSize * playerPos.row;
-
-        g.drawImage(playerSprite, x, y, tileSize, tileSize, observer);
-    }
-
-    public static void renderHUD(){
-
-    }
-    public static void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
+    public void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
         Tile[][] map = GameWorld.getMap();
         Color initialColor = g.getColor(); g.setColor(Color.BLACK);
         g.drawRect(0, 0, 870, 1020);
@@ -109,7 +99,7 @@ public class HUD extends JPanel {
         }
 
        
-        for (Collectible gem : world.getCollectibles()) {
+        for (Gem gem : world.getGems()) {
             Position p = gem.getPosition();
             if (p != null){
                 int[] rc = p.getPosition();

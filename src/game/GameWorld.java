@@ -4,19 +4,18 @@ import immobile.*;
 import mobile.Player;
 import mobile.Zombie;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class GameWorld {
     private static Tile[][] grid;
     private final Player player;
     public ArrayList<Zombie> zombies;
-    private final ArrayList<Collectible> collectibles;
-    private static int gemsRemaining;
+    private final ArrayList<Gem> gems;
+    private int gemsRemaining;
     private GameStatus status;
 
-    public GameWorld(Tile[][] g, Player p, ArrayList<Zombie> z, ArrayList<Collectible> c){
-        grid = g; player = p; zombies = z; collectibles = c; gemsRemaining = c.size();
+    public GameWorld(Tile[][] g, Player p, ArrayList<Zombie> z, ArrayList<Gem> c){
+        grid = g; player = p; zombies = z; gems = c; gemsRemaining = c.size();
         status = GameStatus.RUNNING;
     }
 
@@ -39,34 +38,30 @@ public class GameWorld {
         return grid[position[0]][position[1]];
     }
 
-    public Collectible collectibleAt(Position pos){
-        for (Collectible collectible : collectibles) {
-            Position position = (Position) collectible.getPosition();
-            if (position.equals(pos)) return collectible;
+    public Gem gemAt(Position pos){
+        for (Gem gem : gems) {
+            Position position = gem.getPosition();
+            if (position.equals(pos)) return gem;
         }
         return null;
     }
 
-    public void decrementGems(){
-        gemsRemaining--;
-    }
-
-    public void removeCollectible(Collectible c){
-        collectibles.remove(c);
+    public void removeGem(Gem c){
+        gems.remove(c); gemsRemaining--;
     }
 
     public void setStatus(GameStatus s) {
         status = s;
     }
 
-    public static int getGemsRemaining(){
+    public int getGemsRemaining(){
         return gemsRemaining;
     }
     public static Tile[][] getMap(){
         return grid;
     }
-    public ArrayList<Collectible> getCollectibles(){
-        return collectibles;
+    public ArrayList<Gem> getGems(){
+        return gems;
     }
     public ArrayList<Zombie> getZombies(){
         return zombies;
@@ -88,8 +83,15 @@ public class GameWorld {
         int xPos = p.getPosition()[0]; int yPos = p.getPosition()[1];
         return (grid[xPos][yPos] instanceof Wall);
     }
-    
 
+    public Position getExitTilePosition(){
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length; j++){
+                if (grid[i][j] instanceof ExitTile) return new Position(i, j);
+            }
+        }
+        return null;
+    }
 
     public GameStatus getStatus() {
         return status;

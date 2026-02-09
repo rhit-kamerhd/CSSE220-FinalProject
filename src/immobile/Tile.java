@@ -7,10 +7,7 @@ public interface Tile {
         return this instanceof FloorTile;
     }
 
-    //TODO: complete method onEnter()
-    default void onEnter(){
 
-    }
 
 
 }
