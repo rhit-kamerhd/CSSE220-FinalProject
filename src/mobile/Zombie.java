@@ -42,16 +42,6 @@ public class Zombie extends Entity {
         }
         return null;
     }
-
-    /**
-     * Attempts to move zombie.
-     * @param world game world
-     */
-    public void tryMove(Direction d, GameWorld world) {
-        if (d == null) return;
-        Position next = getPosition().translate(d);
-        if (!world.isWall(next)) setPosition(next);
-    }
     
     /**
      * Updates player each game tick.
