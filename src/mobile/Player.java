@@ -41,19 +41,6 @@ public class Player extends Entity {
     }
 
     /**
-     * Attempts to move the player one tile.
-     * @param d direction to move
-     * @param world game world for collision checks
-     */
-    public void tryMove(Direction d, GameWorld world) {
-        if (d == null) return;
-        Position next = getPosition().translate(d);
-        if (!world.isWall(next)) {
-            setPosition(next);
-        }
-    }
-
-    /**
      * Gets remaining lives.
      * @return number of lives remaining
      */
