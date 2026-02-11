@@ -1,15 +1,15 @@
 package mobile;
 
+
 import game.GameWorld;
 import game.Position;
 
 /**
  * Base class for all movable objects in the game world.
- * Stores position and defines behavior.
+ * Stores position and defines the update behavior.
+ * @author Daniel Vermilya
  */
 public abstract class Entity {
-
-    /** Current position of the entity in the world grid */
     private Position pos;
 
     /**
@@ -30,8 +30,19 @@ public abstract class Entity {
 
     /**
      * Updates the entity each game tick.
-     * @param world the game world the entity exists in
+     * @param world the game world 
      */
     public abstract void update(GameWorld world);
+    
+    /**
+     * Attempts to move the entity one tile.
+     * @param d direction to move
+     * @param world game world for collision checks
+     */
+    public void tryMove(Direction d, GameWorld world) {
+        if (d == null) return;
+        Position next = getPosition().translate(d);
+        if (!world.isWall(next)) setPosition(next);
+    }
 }
 
