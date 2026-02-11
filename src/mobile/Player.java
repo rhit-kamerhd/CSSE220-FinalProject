@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * Represents the player entity.
  * Handles movement, zombie knockback (space), and life tracking.
+ * @author Daniel Vermilya
  */
 public class Player extends Entity {
     private static int lives = 3;
