@@ -23,21 +23,6 @@ public class GameWorld {
         return this.player;
     }
 
-    public boolean isWalkable(Position pos){
-        int[] coords = pos.getPosition(); Tile tile = grid[coords[0]][coords[1]];
-        if (tile instanceof FloorTile){
-            for (Zombie z : zombies){
-                if (z.getPosition() != pos){
-                    return true;
-        }}}
-        return false;
-    }
-
-    public Tile tileAt(Position pos) {
-        int[] position = pos.getPosition();
-        return grid[position[0]][position[1]];
-    }
-
     public Gem gemAt(Position pos){
         for (Gem gem : gems) {
             Position position = gem.getPosition();

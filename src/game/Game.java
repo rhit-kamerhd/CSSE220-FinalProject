@@ -1,8 +1,6 @@
 package game;
 
-import immobile.Collectible;
 import immobile.ExitTile;
-import immobile.Gem;
 import mobile.Direction;
 import mobile.InputHandler;
 import mobile.Zombie;
@@ -16,8 +14,7 @@ public class Game extends JPanel {
 
     private final GameWorld world;
     private static HUD hud;
-    private static JPanel hudPanel;
-    private static boolean paused;
+    private boolean paused;
     public static int levelNum = 1;
 
     private int time = 0;
@@ -33,7 +30,7 @@ public class Game extends JPanel {
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         Game game = new Game(world);
         HUD.initAssets();
-        hudPanel = new JPanel();
+        JPanel hudPanel = new JPanel();
         hudPanel.setBounds(900, 0, 90, 910);
         hudPanel.add(hud);
         InputHandler input = new InputHandler();
@@ -53,7 +50,7 @@ public class Game extends JPanel {
             if (world.getStatus() == GameStatus.RUNNING) {
                 game.time++;
                 if (game.time % 60 == 0) game.requestFocusInWindow();
-                if (!paused) {
+                if (!game.paused) {
                     world.getPlayer().update(world);
                     if (game.time % 10 == 0) {
                         for (Zombie z : world.getZombies()) {
@@ -64,9 +61,19 @@ public class Game extends JPanel {
                 }
             }
             game.repaint();
+
         });
+
+    }
+
+    public static void startTimer(Timer loop){
         loop.start();
     }
+
+    public static void stopTimer(Timer loop){
+        loop.stop();
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
