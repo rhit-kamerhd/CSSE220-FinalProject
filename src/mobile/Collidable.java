@@ -1,4 +1,4 @@
-package game;
+package mobile;
 
 public interface Collidable {
 

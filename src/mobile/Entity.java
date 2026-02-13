@@ -9,7 +9,7 @@ import game.Position;
  * Stores position and defines the update behavior.
  * @author Daniel Vermilya
  */
-public abstract class Entity {
+public abstract class Entity implements Collidable{
     private Position pos;
 
     /**

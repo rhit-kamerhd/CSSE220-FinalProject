@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="Milestone 2">
-      <change afterPath="$PROJECT_DIR$/src/game/StartPanel.java" afterDir="false" />
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="test commit">
+      <change afterPath="$PROJECT_DIR$/src/game/PausePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Collidable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Entity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +24,8 @@
       <list>
         <option value="UML Sequence" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -119,6 +123,7 @@
       <workItem from="1770575999481" duration="9795000" />
       <workItem from="1770644783348" duration="5043000" />
       <workItem from="1770740548075" duration="3346000" />
+      <workItem from="1770940621286" duration="699000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -352,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770661135443</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="test commit">
+      <option name="closed" value="true" />
+      <created>1770940644211</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1770940644211</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,6 +415,7 @@
     <MESSAGE value="fix" />
     <MESSAGE value="fix: updated exit sprite" />
     <MESSAGE value="Milestone 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Milestone 2" />
+    <MESSAGE value="test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="test commit" />
   </component>
 </project>

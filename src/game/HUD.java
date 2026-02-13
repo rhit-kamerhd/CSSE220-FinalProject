@@ -97,8 +97,6 @@ public class HUD extends JPanel {
                 }
             }
         }
-
-       
         for (Gem gem : world.getGems()) {
             Position p = gem.getPosition();
             if (p != null){
@@ -106,9 +104,8 @@ public class HUD extends JPanel {
                 int x = rc[1] * TILE;
                 int y = rc[0] * TILE;
                 g.drawImage(gemSprite, x, y, TILE, TILE, observer);
-        }}
-
-      
+            }
+        }
         for (Zombie z : world.getZombies()) {
             Position p = z.getPosition();
             int[] rc = p.getPosition();
@@ -116,21 +113,15 @@ public class HUD extends JPanel {
             int y = rc[0] * TILE;
             g.drawImage(zombieSprite, x, y, TILE, TILE, observer);
         }
-
-    
         Position p = world.getPlayerPosition();
         int[] rc = p.getPosition();
         int x = rc[1] * TILE;
         int y = rc[0] * TILE;
         g.drawImage(playerSprite, x, y, TILE, TILE, observer);
     }
-
- 
     public void renderPauseMenu() {
         showPauseOverlay = true;
-
         levelLabel.setText("Level: " + Game.levelNum);
-
         Dimension size = getSize();
         int centerX = size.width / 2;
         int centerY = size.height / 2;
@@ -145,8 +136,6 @@ public class HUD extends JPanel {
         revalidate();
         repaint();
     }
-
- 
     public void hidePauseMenu() {
         showPauseOverlay = false;
         levelLabel.setVisible(false);

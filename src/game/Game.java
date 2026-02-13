@@ -59,6 +59,9 @@ public class Game extends JPanel {
                         }
                     }
                 }
+                else{
+
+                }
             }
             game.repaint();
 
