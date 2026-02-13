@@ -1,12 +1,12 @@
 package mobile;
 
-
 import game.GameWorld;
 import game.Position;
-
+import java.awt.Rectangle;
 /**
- * Base class for all movable objects in the game world.
- * Stores position and defines the update behavior.
+ * abstract class for all movable objects in the game world.
+ * Stores position and defines enity behavior
+ * Implements collidable interface
  * @author Daniel Vermilya
  */
 public abstract class Entity implements Collidable{
@@ -27,12 +27,6 @@ public abstract class Entity implements Collidable{
     public void setPosition(Position p) {
         pos = p;
     }
-
-    /**
-     * Updates the entity each game tick.
-     * @param world the game world 
-     */
-    public abstract void update(GameWorld world);
     
     /**
      * Attempts to move the entity one tile.
@@ -44,5 +38,28 @@ public abstract class Entity implements Collidable{
         Position next = getPosition().translate(d);
         if (!world.isWall(next)) setPosition(next);
     }
+
+    /**
+    * Gets the sprite size for entity
+    */
+    protected abstract int getSpriteSize();
+
+    @Override
+    public abstract void onCollide(Collidable other);
+
+    @Override
+    public Rectangle getBounds() {
+        int size = getSpriteSize();
+        int x = position.col * size;
+        int y = position.row * size;
+        return new Rectangle(x, y, size, size);
+    }
+
+    /**
+     * Updates the entity each game tick.
+     * @param world the game world 
+     */
+    public abstract void update(GameWorld world);
+    
 }
 
