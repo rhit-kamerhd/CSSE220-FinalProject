@@ -15,6 +15,7 @@ public class HUD extends JPanel {
 
     private boolean showPauseOverlay;
     private static JButton unpauseButton;
+    private JButton pauseButton;
     private final JLabel levelLabel = new JLabel();
     private static final int TILE = 35;
     private static BufferedImage wallSprite;

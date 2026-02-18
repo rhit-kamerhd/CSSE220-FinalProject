@@ -26,7 +26,6 @@ public class Game extends JPanel {
     }
 
     static void main() throws IOException {
-
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         Game game = new Game(world);
         HUD.initAssets();
@@ -59,14 +58,11 @@ public class Game extends JPanel {
                         }
                     }
                 }
-                else{
-
-                }
             }
             game.repaint();
 
         });
-
+        startTimer(loop);
     }
 
     public static void startTimer(Timer loop){
