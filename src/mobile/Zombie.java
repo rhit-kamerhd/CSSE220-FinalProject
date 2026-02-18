@@ -5,9 +5,6 @@ import game.GameWorld;
 import game.HUD;
 import game.Position;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -16,14 +13,15 @@ import java.io.IOException;
  * @author Daniel Vermilya
  */
 public class Zombie extends Entity {
-    private final Random rand = new Random();;
+
+    private final Random rand = new Random();
     public final BufferedImage sprite;
     
     /**
      * Creates a zombie.
      * @param p starting position
      */
-    public Zombie(Position p) throws IOException{
+    public Zombie(Position p) throws IOException {
         setPosition(p);
         sprite = HUD.load("/zombie_sprite.png");
     }
@@ -51,6 +49,19 @@ public class Zombie extends Entity {
     public void update(GameWorld world) {
         Direction d = chooseMove(world);
         tryMove(d, world);
+    }
+    /**
+    * gets sprite size
+    * @return sprite width
+    */
+    @Override
+    protected int getSpriteSize() {
+        return sprite.getWidth();
+    }
+    
+    @Override
+    public void onCollide(Collidable other) {
+        // No special behavior yet
     }
 }
 
