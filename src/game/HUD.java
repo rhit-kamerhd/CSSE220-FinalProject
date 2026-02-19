@@ -12,9 +12,7 @@ import java.io.IOException;
 
 
 public class HUD extends JPanel {
-
     private boolean showPauseOverlay;
-    private static JButton unpauseButton;
     private JButton pauseButton;
     private final JLabel levelLabel = new JLabel();
     private static final int TILE = 35;
@@ -27,11 +25,15 @@ public class HUD extends JPanel {
     private final JLabel livesLabel = new JLabel();
     private final JLabel gemsLabel = new JLabel();
 
-    public HUD() {
+    public HUD(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(true);
+        Font font = Font.getFont(Font.SERIF);
+        livesLabel.setFont(font);
+        gemsLabel.setFont(font); levelLabel.setFont(font);
         livesLabel.setLocation(900, 50); gemsLabel.setLocation(900, 100);
         JButton pauseButton = new JButton("Pause");
+        pauseButton.setFont(font);
         pauseButton.setLocation(900, 200);
         levelLabel.setLocation(900, 150);
         add(livesLabel);
@@ -54,7 +56,6 @@ public class HUD extends JPanel {
         super.paintComponent(g);
     }
 
-
     public static void initAssets() {
         if (wallSprite != null) return;
         try {
@@ -68,14 +69,12 @@ public class HUD extends JPanel {
             throw new RuntimeException(e);
         }
     }
-
  
     public static BufferedImage load(String path) throws IOException {
         var in = HUD.class.getResourceAsStream(path);
         if (in == null) throw new IllegalStateException("Missing resource: " + path);
         return ImageIO.read(in);
     }
-
 
     public void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
         Tile[][] map = GameWorld.getMap();
@@ -120,27 +119,27 @@ public class HUD extends JPanel {
         int y = rc[0] * TILE;
         g.drawImage(playerSprite, x, y, TILE, TILE, observer);
     }
-    public void renderPauseMenu() {
-        showPauseOverlay = true;
-        levelLabel.setText("Level: " + Game.levelNum);
-        Dimension size = getSize();
-        int centerX = size.width / 2;
-        int centerY = size.height / 2;
-        int labelW = 200;
-        int labelH = 30;
-        levelLabel.setBounds(centerX - labelW / 2, centerY - 90, labelW, labelH);
-        int buttonW = 140;
-        int buttonH = 35;
-        unpauseButton.setBounds(centerX - buttonW / 2, centerY - 30, buttonW, buttonH);
-        levelLabel.setVisible(true);
-        unpauseButton.setVisible(true);
-        revalidate();
-        repaint();
-    }
-    public void hidePauseMenu() {
-        showPauseOverlay = false;
-        levelLabel.setVisible(false);
-        unpauseButton.setVisible(false);
-        repaint();
-    }
+//    public void renderPauseMenu() {
+//        showPauseOverlay = true;
+//        levelLabel.setText("Level: " + game.levelNum);
+//        Dimension size = getSize();
+//        int centerX = size.width / 2;
+//        int centerY = size.height / 2;
+//        int labelW = 200;
+//        int labelH = 30;
+//        levelLabel.setBounds(centerX - labelW / 2, centerY - 90, labelW, labelH);
+//        int buttonW = 140;
+//        int buttonH = 35;
+//        unpauseButton.setBounds(centerX - buttonW / 2, centerY - 30, buttonW, buttonH);
+//        levelLabel.setVisible(true);
+//        unpauseButton.setVisible(true);
+//        revalidate();
+//        repaint();
+//    }
+//    public void hidePauseMenu() {
+//        showPauseOverlay = false;
+//        levelLabel.setVisible(false);
+//        unpauseButton.setVisible(false);
+//        repaint();
+//    }
 }

@@ -50,8 +50,8 @@ public abstract class Entity implements Collidable{
     @Override
     public Rectangle getBounds() {
         int size = getSpriteSize();
-        int x = position.col * size;
-        int y = position.row * size;
+        int x = pos.col * size;
+        int y = pos.row * size;
         return new Rectangle(x, y, size, size);
     }
 
