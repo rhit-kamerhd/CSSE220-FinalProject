@@ -133,16 +133,6 @@ public class Player extends Entity {
         gemPickup(world);
     }
 
-    @Override
-    protected int getSpriteSize() {
-        return sprite.getWidth();
-    }
-
-    @Override
-    public void onCollide(Collidable other) {
-        // Collision handled in update()
-    }
-
     public InputHandler getInput(){
         return this.input;
     }

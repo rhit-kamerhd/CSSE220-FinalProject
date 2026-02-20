@@ -31,6 +31,7 @@ public class Game extends JPanel {
         GameWorld world = WorldBuilder.buildFromTemplate(levelNum);
         StartPanel start = new StartPanel(world);
         Game game = new Game(world);
+        game.addKeyListener(input);
         HUD.initAssets();
         game.hudPanel.setBounds(900, 0, 90, 910);
         game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +48,6 @@ public class Game extends JPanel {
                 game.hudPanel.setPreferredSize(new Dimension(90, 0));
                 game.hudPanel.setLayout(new BorderLayout()); game.hudPanel.add(game.hud, BorderLayout.CENTER);
                 game.frame.add(game.hudPanel, BorderLayout.EAST);
-                game.addKeyListener(input);
                 game.setFocusable(true);
                 game.frame.revalidate();
                 game.frame.repaint();
