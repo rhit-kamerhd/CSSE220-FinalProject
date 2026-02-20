@@ -10,7 +10,7 @@ public class GameWorld {
     private static Tile[][] grid;
     private final Player player;
     public ArrayList<Zombie> zombies;
-    private final ArrayList<Gem> gems;
+    private ArrayList<Gem> gems;
     private int gemsRemaining;
     private GameStatus status;
 
@@ -87,5 +87,18 @@ public class GameWorld {
 
     public int getScore(){
         return getPlayer().score;
+    }
+
+    public ExitTile getExitTile(){
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length; j++){
+                if (grid[i][j] instanceof ExitTile) return (ExitTile) grid[i][j];
+            }
+        }
+        return null;
+    }
+
+    public void setGemsRemaining(int i){
+        this.gemsRemaining = i;
     }
 }

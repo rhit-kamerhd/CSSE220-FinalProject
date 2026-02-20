@@ -11,8 +11,8 @@ public class Position {
     }
 
     public Position translate(Direction d){
-        if (d == Direction.UP) return new Position(this.row + 1, this.col);
-        if (d == Direction.DOWN) return new Position(this.row - 1, this.col);
+        if (d == Direction.UP) return new Position(this.row - 1, this.col);
+        if (d == Direction.DOWN) return new Position(this.row + 1, this.col);
         if (d == Direction.LEFT) return new Position(this.row, this.col - 1);
         return new Position(this.row, this.col + 1);
     }

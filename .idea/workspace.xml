@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="fix: test push">
+      <change afterPath="$PROJECT_DIR$/resources/floor_sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/player_sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/wall_sprite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Collidable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobile/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobile/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/InputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/coin_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/coin_sprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/exit_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/exit_sprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/pauseBackground.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/pauseBackground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/player_sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/zombie_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/zombie_sprite.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +141,7 @@
       <workItem from="1771456047762" duration="3098000" />
       <workItem from="1771529089501" duration="18663000" />
       <workItem from="1771559530420" duration="138000" />
-      <workItem from="1771559683698" duration="4526000" />
+      <workItem from="1771559683698" duration="10240000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -404,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771565220487</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fix: test push">
+      <option name="closed" value="true" />
+      <created>1771566134053</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1771566134053</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

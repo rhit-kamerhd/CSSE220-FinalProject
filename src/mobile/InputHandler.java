@@ -66,7 +66,6 @@ public class InputHandler implements KeyListener {
         if (k == KeyEvent.VK_SPACE) push = true;
         if (k == KeyEvent.VK_P) pause = true;
         if (k == KeyEvent.VK_E) pickup = true;
-        System.out.println("pressed " + e.getKeyCode());
     }
     
     /**

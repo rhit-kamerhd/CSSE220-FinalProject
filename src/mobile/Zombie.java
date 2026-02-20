@@ -13,7 +13,7 @@ public class Zombie extends Entity {
 
     public Zombie(Position p) {
         setPosition(p);
-        sprite = new ImageIcon(getClass().getResource("/sprites/zombie_sprite.png")).getImage();
+        sprite = new ImageIcon(getClass().getResource("/zombie_sprite.png")).getImage();
     }
 
     public Image getSprite() {
