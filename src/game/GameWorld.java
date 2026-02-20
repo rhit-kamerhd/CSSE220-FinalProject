@@ -16,7 +16,7 @@ public class GameWorld {
 
     public GameWorld(Tile[][] g, Player p, ArrayList<Zombie> z, ArrayList<Gem> c){
         grid = g; player = p; zombies = z; gems = c; gemsRemaining = c.size();
-        status = GameStatus.RUNNING;
+        status = GameStatus.ON_START;
     }
 
     public Player getPlayer(){
@@ -42,15 +42,19 @@ public class GameWorld {
     public int getGemsRemaining(){
         return gemsRemaining;
     }
+
     public static Tile[][] getMap(){
         return grid;
     }
+
     public ArrayList<Gem> getGems(){
         return gems;
     }
+
     public ArrayList<Zombie> getZombies(){
         return zombies;
     }
+
     public Position getPlayerPosition(){
         return player.getPosition();
     }
@@ -62,7 +66,6 @@ public class GameWorld {
         }
         return null;
     }
-
 
     public boolean isWall(Position p) {
         int xPos = p.getPosition()[0]; int yPos = p.getPosition()[1];
@@ -80,5 +83,9 @@ public class GameWorld {
 
     public GameStatus getStatus() {
         return status;
+    }
+
+    public int getScore(){
+        return getPlayer().score;
     }
 }

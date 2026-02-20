@@ -5,22 +5,25 @@ import mobile.Direction;
 import mobile.InputHandler;
 import mobile.Zombie;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
 public class Game extends JPanel {
-
     private final GameWorld world;
-    private static HUD hud;
+    public final JPanel hudPanel = new JPanel();
+    public HUD hud;
     private boolean paused;
     public static int levelNum = 1;
+    public final JFrame frame = new JFrame("Cave Game");
+    public static final InputHandler input = new InputHandler();
 
     private int time = 0;
 
-    public Game(GameWorld world) {
+    public Game(GameWorld world) throws IOException {
         this.world = world;
-        hud = new HUD();
+        hud = new HUD(this, world);
         setFocusable(true);
     }
 
@@ -29,28 +32,32 @@ public class Game extends JPanel {
         StartPanel start = new StartPanel(world);
         Game game = new Game(world);
         HUD.initAssets();
-        JPanel hudPanel = new JPanel();
-        hudPanel.setBounds(900, 0, 90, 910);
-        InputHandler input = new InputHandler();
-        world.getPlayer().setInputHandler(input);
-        JFrame frame = new JFrame("Cave Game");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(990, 910));
-        frame.add(start);
-        frame.setVisible(true);
-        while (world.getStatus() == GameStatus.ON_START){
-        }
-        hudPanel.add(hud);
-        frame.add(hudPanel, BorderLayout.EAST);
-        game.addKeyListener(input);
-        game.setFocusable(true);
-        SwingUtilities.invokeLater(game::requestFocusInWindow);
-        Timer loop = new Timer(100, e -> {
+        game.hudPanel.setBounds(900, 0, 90, 910);
+        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.frame.setSize(new Dimension(990, 910));
+        game.frame.add(start); game.frame.setVisible(true);
+        PausePanel pausePanel = new PausePanel(world, game);
+        Timer loop = new Timer(100, _ -> {
             if (world.getPlayer().getLivesRemaining() < 1) world.setStatus(GameStatus.LOST);
             if (world.getPlayerPosition() == world.getExitTilePosition()) ExitTile.onEnter(world);
+            if (world.getStatus() == GameStatus.STARTING){
+                game.frame.getContentPane().removeAll(); game.frame.setLayout(new BorderLayout());
+                world.getPlayer().setInputHandler(input);
+                game.frame.add(game, BorderLayout.CENTER); game.hudPanel.removeAll();
+                game.hudPanel.setPreferredSize(new Dimension(90, 0));
+                game.hudPanel.setLayout(new BorderLayout()); game.hudPanel.add(game.hud, BorderLayout.CENTER);
+                game.frame.add(game.hudPanel, BorderLayout.EAST);
+                game.addKeyListener(input);
+                game.setFocusable(true);
+                game.frame.revalidate();
+                game.frame.repaint();
+                SwingUtilities.invokeLater(game::requestFocusInWindow);
+                world.setStatus(GameStatus.RUNNING);
+            }
             if (world.getStatus() == GameStatus.RUNNING) {
                 if (game.paused){
-
+                    pausePanel.updateStats(world);
+                    pausePanel.repaint();
                 }
                 else{
                     game.time++;
@@ -67,19 +74,17 @@ public class Game extends JPanel {
                 }
             }
             game.repaint();
-
         });
-        startTimer(loop);
+        game.startTimer(loop);
     }
 
-    public static void startTimer(Timer loop){
+    public void startTimer(Timer loop){
         loop.start();
     }
 
-    public static void stopTimer(Timer loop){
-        loop.stop();
+    public void setPaused(boolean bool){
+        paused = bool;
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {

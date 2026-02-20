@@ -1,7 +1,5 @@
 package mobile;
 
-import game.Game;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -68,6 +66,7 @@ public class InputHandler implements KeyListener {
         if (k == KeyEvent.VK_SPACE) push = true;
         if (k == KeyEvent.VK_P) pause = true;
         if (k == KeyEvent.VK_E) pickup = true;
+        System.out.println("pressed " + e.getKeyCode());
     }
     
     /**

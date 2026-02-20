@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 public class HUD extends JPanel {
-    private boolean showPauseOverlay;
+    private final Font font = new Font("Cambria", Font.PLAIN, 14);
     private JButton pauseButton;
     private final JLabel levelLabel = new JLabel();
     private static final int TILE = 35;
@@ -25,22 +25,27 @@ public class HUD extends JPanel {
     private final JLabel livesLabel = new JLabel();
     private final JLabel gemsLabel = new JLabel();
 
-    public HUD(){
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setOpaque(true);
-        Font font = Font.getFont(Font.SERIF);
-        livesLabel.setFont(font);
-        gemsLabel.setFont(font); levelLabel.setFont(font);
+    public HUD(Game game, GameWorld world) throws IOException {
+        PausePanel pausePanel = new PausePanel(world, game);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); setOpaque(false);
+        livesLabel.setFont(font); gemsLabel.setFont(font); levelLabel.setFont(font);
         livesLabel.setLocation(900, 50); gemsLabel.setLocation(900, 100);
         JButton pauseButton = new JButton("Pause");
         pauseButton.setFont(font);
         pauseButton.setLocation(900, 200);
         levelLabel.setLocation(900, 150);
-        add(livesLabel);
-        add(gemsLabel); add(levelLabel);
+        add(livesLabel); add(gemsLabel); add(levelLabel);
         add(Box.createVerticalStrut(10)); add(pauseButton);
         livesLabel.setText("Lives: "); gemsLabel.setText("Gems: ");
         levelLabel.setText("Level: ");
+        pauseButton.addActionListener(e -> {
+            game.setPaused(true);
+            try {
+                pausePanel.renderPauseMenu(game, world);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     public void updateHUD(GameWorld world, int levelNum) {
@@ -86,14 +91,10 @@ public class HUD extends JPanel {
                 int x = col * TILE;
                 int y = row * TILE;
                 Tile t = map[row][col];
-                if (t == null) {
-                    g.drawImage(floorSprite, x, y, TILE, TILE, observer);
-                } else if (t instanceof Wall) {
-                    g.drawImage(wallSprite, x, y, TILE, TILE, observer);
-                } else if (t instanceof ExitTile) {
-                    g.drawImage(exitSprite, x, y, TILE, TILE, observer);
-                } else {
-                    g.drawImage(floorSprite, x, y, TILE, TILE, observer);
+                switch (t) {
+                    case Wall wall -> g.drawImage(wallSprite, x, y, TILE, TILE, observer);
+                    case ExitTile exitTile -> g.drawImage(exitSprite, x, y, TILE, TILE, observer);
+                    case null, default -> g.drawImage(floorSprite, x, y, TILE, TILE, observer);
                 }
             }
         }
@@ -119,27 +120,4 @@ public class HUD extends JPanel {
         int y = rc[0] * TILE;
         g.drawImage(playerSprite, x, y, TILE, TILE, observer);
     }
-//    public void renderPauseMenu() {
-//        showPauseOverlay = true;
-//        levelLabel.setText("Level: " + game.levelNum);
-//        Dimension size = getSize();
-//        int centerX = size.width / 2;
-//        int centerY = size.height / 2;
-//        int labelW = 200;
-//        int labelH = 30;
-//        levelLabel.setBounds(centerX - labelW / 2, centerY - 90, labelW, labelH);
-//        int buttonW = 140;
-//        int buttonH = 35;
-//        unpauseButton.setBounds(centerX - buttonW / 2, centerY - 30, buttonW, buttonH);
-//        levelLabel.setVisible(true);
-//        unpauseButton.setVisible(true);
-//        revalidate();
-//        repaint();
-//    }
-//    public void hidePauseMenu() {
-//        showPauseOverlay = false;
-//        levelLabel.setVisible(false);
-//        unpauseButton.setVisible(false);
-//        repaint();
-//    }
 }

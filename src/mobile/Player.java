@@ -118,7 +118,8 @@ public class Player extends Entity {
         if (input == null) return;
 
         Direction d = input.getMoveDirection();
-        tryMove(d, world);
+
+        if (d != null) tryMove(d, world);
 
         if (input.consumePush()) {
             knockbackAdjacentZombie(world);
@@ -140,6 +141,10 @@ public class Player extends Entity {
     @Override
     public void onCollide(Collidable other) {
         // Collision handled in update()
+    }
+
+    public InputHandler getInput(){
+        return this.input;
     }
 
 }
