@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: added WinPanel, GameOverPanel, and background images for both">
-      <change beforePath="$PROJECT_DIR$/.idea/GameUMLDiagram.puml" beforeDir="false" />
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="Milestone 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameOverPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameOverPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/AbstractTile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/Collectible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Collectible.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/FloorTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/FloorTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/immobile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobile/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/InputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobile/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PausePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PausePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/StartPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/StartPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/WinPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WinPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/ExitTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/ExitTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/Gem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/Gem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile/Entity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +142,7 @@
       <workItem from="1771600738561" duration="1489000" />
       <workItem from="1771603279312" duration="198000" />
       <workItem from="1771779937193" duration="3864000" />
-      <workItem from="1771794607517" duration="3843000" />
+      <workItem from="1771794607517" duration="5473000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -444,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771795324592</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Milestone 3">
+      <option name="closed" value="true" />
+      <created>1771798722679</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1771798722679</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="more preliminary classes" />
     <MESSAGE value="some fun lil uml edits" />
     <MESSAGE value="some more fun lil uml edits" />
     <MESSAGE value="mostly all classes created" />
@@ -497,6 +508,7 @@
     <MESSAGE value="feat: StartPanel and PausePanel effectively complete" />
     <MESSAGE value="fix: test commit" />
     <MESSAGE value="feat: added WinPanel, GameOverPanel, and background images for both" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added WinPanel, GameOverPanel, and background images for both" />
+    <MESSAGE value="Milestone 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone 3" />
   </component>
 </project>
