@@ -5,7 +5,6 @@ import mobile.Direction;
 import mobile.InputHandler;
 import mobile.Zombie;
 
-import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -28,38 +27,42 @@ public class Game extends JPanel {
     }
 
     static void main() throws IOException{
-        run(frame);
+        run();
     }
 
-    public static void run(JFrame jFrame) throws IOException {
+    private static void run() throws IOException {
         WorldBuilder level = new WorldBuilder();
         GameWorld world = level.buildFromTemplate(levelNum);
-        StartPanel start = new StartPanel(world);
         Game game = new Game(world);
+        if (levelNum == 2){
+            world.setStatus(GameStatus.STARTING);
+        }
         game.addKeyListener(input);
         HUD.initAssets();
         game.hudPanel.setBounds(900, 0, 90, 910);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(new Dimension(990, 910));
+        Game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Game.frame.setSize(new Dimension(990, 910));
         if (levelNum == 1) {
-            jFrame.add(start);
+            StartPanel start = new StartPanel(world);
+            Game.frame.add(start);
         }
-        else jFrame.add(game);
-        jFrame.setVisible(true);
+        else Game.frame.add(game);
+        Game.frame.setVisible(true);
         PausePanel pausePanel = new PausePanel(world, game);
-        Timer loop = new Timer(100, _ -> {
+        Timer loop = new Timer(100, e -> {
+            System.out.println(world.getStatus());
             if (world.getPlayer().getLivesRemaining() < 1) world.setStatus(GameStatus.LOST);
             if (world.getPlayerPosition() == world.getExitTilePosition()) ExitTile.winOnEnter(world);
             if (world.getStatus() == GameStatus.STARTING){
-                jFrame.getContentPane().removeAll(); jFrame.setLayout(new BorderLayout());
+                Game.frame.getContentPane().removeAll(); Game.frame.setLayout(new BorderLayout());
                 world.getPlayer().setInputHandler(input);
-                jFrame.add(game, BorderLayout.CENTER); game.hudPanel.removeAll();
+                Game.frame.add(game, BorderLayout.CENTER); game.hudPanel.removeAll();
                 game.hudPanel.setPreferredSize(new Dimension(90, 0));
                 game.hudPanel.setLayout(new BorderLayout()); game.hudPanel.add(game.hud, BorderLayout.CENTER);
-                jFrame.add(game.hudPanel, BorderLayout.EAST);
+                Game.frame.add(game.hudPanel, BorderLayout.EAST);
                 game.setFocusable(true);
-                jFrame.revalidate();
-                jFrame.repaint();
+                Game.frame.revalidate();
+                Game.frame.repaint();
                 SwingUtilities.invokeLater(game::requestFocusInWindow);
                 world.setStatus(GameStatus.RUNNING);
             }
@@ -83,15 +86,42 @@ public class Game extends JPanel {
                     }
                 }
             }
+            else if (world.getPlayer().getLivesRemaining() == 0){
+                world.setStatus(GameStatus.LOST);
+                Timer current = (Timer) e.getSource();
+                try {
+                    GameOverPanel gameOverPanel = new GameOverPanel();
+                    gameOverPanel.renderGameOverPanel(game);
+                    current.stop();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
             else if (world.getExitTile().winOnEnter(world)){
                 if (levelNum < 2) {
                     levelNum++;
-//                    try {
-                        world.setGemsRemaining(-1);
-//                        run(frame);
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
+                    world.setStatus(GameStatus.ON_START);
+                    world.setGemsRemaining(5);
+                    Timer current = (Timer) e.getSource();
+                    try {
+                        run();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    current.stop();
+                }
+                if (levelNum == 2){
+                    world.setStatus(GameStatus.WON);
+                    world.setGemsRemaining(5);
+                    Timer current = (Timer) e.getSource();
+                    current.stop();
+                    try {
+                        WinPanel winPanel = new WinPanel();
+                        winPanel.renderWinPanel(game);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
             if (world.getGemsRemaining() == 0){
@@ -105,7 +135,7 @@ public class Game extends JPanel {
         game.startTimer(loop);
     }
 
-    public void startTimer(Timer loop){
+    private void startTimer(Timer loop){
         loop.start();
     }
 

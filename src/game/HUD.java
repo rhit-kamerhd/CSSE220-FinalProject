@@ -82,7 +82,7 @@ public class HUD extends JPanel {
     }
 
     public void renderWorld(GameWorld world, Graphics g, ImageObserver observer) {
-        Tile[][] map = GameWorld.getMap();
+        Tile[][] map = world.getMap();
         Color initialColor = g.getColor(); g.setColor(Color.BLACK);
         g.drawRect(0, 0, 870, 1020);
         g.setColor(initialColor);

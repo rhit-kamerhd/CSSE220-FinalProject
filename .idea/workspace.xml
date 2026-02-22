@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="feat: StartPanel and PausePanel effectively complete">
+    <list default="true" id="071edf0c-ff32-46c0-9c9c-35185f9dc932" name="Changes" comment="fix: test commit">
+      <change afterPath="$PROJECT_DIR$/resources/gameOverBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/GameOverPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/WinPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PausePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PausePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/immobile/AbstractTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/immobile/AbstractTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundMusic.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/floor_sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/startBackground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/wall_sprite.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +139,11 @@
       <workItem from="1771456047762" duration="3098000" />
       <workItem from="1771529089501" duration="18663000" />
       <workItem from="1771559530420" duration="138000" />
-      <workItem from="1771559683698" duration="12248000" />
+      <workItem from="1771559683698" duration="12259000" />
+      <workItem from="1771600738561" duration="1489000" />
+      <workItem from="1771603279312" duration="198000" />
+      <workItem from="1771779937193" duration="3864000" />
+      <workItem from="1771794607517" duration="631000" />
     </task>
     <task id="LOCAL-00001" summary="test push">
       <option name="closed" value="true" />
@@ -416,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771596111331</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="fix: test commit">
+      <option name="closed" value="true" />
+      <created>1771600619703</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1771600619703</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="another test push" />
     <MESSAGE value="preliminary classes" />
     <MESSAGE value="more preliminary classes" />
     <MESSAGE value="some fun lil uml edits" />
@@ -469,6 +493,7 @@
     <MESSAGE value="fix: moved collidable interface to mobile package" />
     <MESSAGE value="fix: test push" />
     <MESSAGE value="feat: StartPanel and PausePanel effectively complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: StartPanel and PausePanel effectively complete" />
+    <MESSAGE value="fix: test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: test commit" />
   </component>
 </project>

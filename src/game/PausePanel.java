@@ -52,20 +52,20 @@ public class PausePanel extends JPanel {
     }
 
     public void renderPauseMenu(Game game, GameWorld world) throws IOException {
-        game.frame.getContentPane().removeAll(); game.frame.setLayout(new BorderLayout());
-        game.frame.add(new PausePanel(world, game)); game.setPaused(true);
-        game.frame.revalidate(); game.frame.repaint();
+        Game.frame.getContentPane().removeAll(); Game.frame.setLayout(new BorderLayout());
+        Game.frame.add(new PausePanel(world, game)); game.setPaused(true);
+        Game.frame.revalidate(); Game.frame.repaint();
         game.setFocusable(true); SwingUtilities.invokeLater(game::requestFocusInWindow);
     }
 
     public void unRenderPauseMenu(Game game, GameWorld world){
-        game.frame.getContentPane().removeAll(); game.frame.setLayout(new BorderLayout());
-        game.frame.add(game, BorderLayout.CENTER); game.frame.addKeyListener(Game.input);
+        Game.frame.getContentPane().removeAll(); Game.frame.setLayout(new BorderLayout());
+        Game.frame.add(game, BorderLayout.CENTER); Game.frame.addKeyListener(Game.input);
         world.getPlayer().setInputHandler(Game.input);
         game.hudPanel.setPreferredSize(new Dimension(90, 0));
         game.hudPanel.setLayout(new BorderLayout()); game.hudPanel.add(game.hud, BorderLayout.CENTER);
-        game.frame.add(game.hudPanel, BorderLayout.EAST); game.frame.revalidate();
-        game.frame.repaint();
+        Game.frame.add(game.hudPanel, BorderLayout.EAST); Game.frame.revalidate();
+        Game.frame.repaint();
         System.out.println(world.getPlayer().getInput());
     }
 

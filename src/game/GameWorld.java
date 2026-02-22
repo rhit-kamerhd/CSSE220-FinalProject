@@ -7,8 +7,8 @@ import mobile.Zombie;
 import java.util.ArrayList;
 
 public class GameWorld {
-    private static Tile[][] grid;
-    private final Player player;
+    private Tile[][] grid;
+    private Player player;
     public ArrayList<Zombie> zombies;
     private ArrayList<Gem> gems;
     private int gemsRemaining;
@@ -43,7 +43,7 @@ public class GameWorld {
         return gemsRemaining;
     }
 
-    public static Tile[][] getMap(){
+    public Tile[][] getMap(){
         return grid;
     }
 
@@ -100,5 +100,9 @@ public class GameWorld {
 
     public void setGemsRemaining(int i){
         this.gemsRemaining = i;
+    }
+
+    public void setAllToNull(){
+        this.grid = null; this.player = null; this.zombies = null; this.gems = null;
     }
 }
