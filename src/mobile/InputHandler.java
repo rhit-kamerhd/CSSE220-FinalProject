@@ -35,24 +35,7 @@ public class InputHandler implements KeyListener {
         push = false;
         return true;
     }
-    
-    /**
-     * Allows pickup to occur only once per key press.
-     * @return true if pickup action should trigger
-     */
-    public boolean consumePickup() {
-        if (!pickup) return false;
-        pickup = false;
-        return true;
-    }
 
-
-    /**
-     * @return true if pause key is pressed
-     */
-    public boolean isPausePressed() {
-        return pause;
-    }
     /**
      * key event pressed 
      */

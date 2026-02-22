@@ -101,8 +101,4 @@ public class GameWorld {
     public void setGemsRemaining(int i){
         this.gemsRemaining = i;
     }
-
-    public void setAllToNull(){
-        this.grid = null; this.player = null; this.zombies = null; this.gems = null;
-    }
 }

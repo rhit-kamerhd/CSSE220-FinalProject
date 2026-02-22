@@ -16,10 +16,6 @@ public class Zombie extends Entity {
         sprite = new ImageIcon(getClass().getResource("/zombie_sprite.png")).getImage();
     }
 
-    public Image getSprite() {
-        return sprite;
-    }
-
     public Direction chooseMove(GameWorld world) {
         Direction[] dirs = Direction.values();
         for (int i = 0; i < 10; i++) {
